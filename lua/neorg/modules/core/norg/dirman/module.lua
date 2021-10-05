@@ -93,33 +93,33 @@ module.private = {
 
 module.public = {
 
-    -- @Summary Returns a list of all the workspaces
+    --- Returns a list of all the workspaces
     get_workspaces = function()
         return module.config.public.workspaces
     end,
 
-    -- @Summary Returns an array of all the workspace names (without their paths)
+    --- Returns an array of all the workspace names (without their paths)
     get_workspace_names = function()
         return vim.tbl_keys(module.config.public.workspaces)
     end,
 
-    -- @Summary Retrieve a workspace
-    -- @Description If present retrieve a workspace's path by its name, else returns nil
-    -- @Param  name (string) - the name of the workspace
+    --- Retrieve a workspace
+    -- If present retrieve a workspace's path by its name, else returns nil
+    --- @param name string #The name of the workspace
     get_workspace = function(name)
         return module.config.public.workspaces[name]
     end,
 
-    -- @Summary Retrieves the current workspace
-    -- @Description Returns a table in the format { "workspace_name", "path" }
+    --- Retrieves the current workspace
+    -- Returns a table in the format { "workspace_name", "path" }
     get_current_workspace = function()
         return module.private.current_workspace
     end,
 
-    -- @Summary Sets the current workspace
-    -- @Description Sets the workspace to the one specified (if it exists) and broadcasts the workspace_changed event
-    --				Returns true if the workspace is set correctly, else returns false
-    -- @Param  ws_name (name) - the name of a valid namespace we want to switch to
+    --- Sets the current workspace
+    -- Sets the workspace to the one specified (if it exists) and broadcasts the workspace_changed event
+    -- Returns true if the workspace is set correctly, else returns false
+    --- @param ws_name name #The name of a valid namespace we want to switch to
     set_workspace = function(ws_name)
         -- Grab the workspace location
         local workspace = module.config.public.workspaces[ws_name]
@@ -153,11 +153,11 @@ module.public = {
         return true
     end,
 
-    -- @Summary Adds a new workspace
-    -- @Description Dynamically defines a new workspace if the name isn't already occupied and broadcasts the workspace_added event
-    --				Returns true if the workspace is added successfully, else returns false
-    -- @Param  workspace_name (string) - the unique name of the new workspace
-    -- @Param  workspace_path (string) - a full path to the workspace root
+    --- Adds a new workspace
+    -- Dynamically defines a new workspace if the name isn't already occupied and broadcasts the workspace_added event
+    -- Returns true if the workspace is added successfully, else returns false
+    --- @param workspace_name string #The unique name of the new workspace
+    --- @param workspace_path string #A full path to the workspace root
     add_workspace = function(workspace_name, workspace_path)
         -- If the module already exists then bail
         if module.config.public.workspaces[workspace_name] then
@@ -177,8 +177,8 @@ module.public = {
         return true
     end,
 
-    -- @Summary Returns the closes match from the cwd to a valid workspace
-    -- @Description If the file we opened is within a workspace directory, returns the name of the workspace, else returns nil
+    --- Returns the closes match from the cwd to a valid workspace
+    -- If the file we opened is within a workspace directory, returns the name of the workspace, else returns nil
     get_workspace_match = function()
         -- Cache the current working directory
         module.config.public.workspaces.default = vim.fn.getcwd()
@@ -215,8 +215,8 @@ module.public = {
         return result:len() ~= 0 and result or "default"
     end,
 
-    -- @Summary Updates the current working directory to the workspace root
-    -- @Description Uses the get_workspace_match() function to determine the root of the workspace, then changes into that directory
+    --- Updates the current working directory to the workspace root
+    -- Uses the get_workspace_match() function to determine the root of the workspace, then changes into that directory
     update_cwd = function()
         -- Get the closest workspace match
         local ws_match = module.public.get_workspace_match()
@@ -230,8 +230,8 @@ module.public = {
         end
     end,
 
-    -- @Summary Synchronizes the module to the Neorg environment
-    -- @Description Updates completions for the :Neorg command
+    --- Synchronizes the module to the Neorg environment
+    -- Updates completions for the :Neorg command
     sync = function()
         -- Get all the workspace names
         local workspace_names = module.public.get_workspace_names()
@@ -261,9 +261,9 @@ module.public = {
         })
     end,
 
-    -- @Summary Creates a new Neorg file
-    -- @Description Takes in a path (can include directories) and creates a .norg file from that path
-    -- @Param  path (string) - a path to place the .norg file in
+    --- Creates a new Neorg file
+    -- Takes in a path (can include directories) and creates a .norg file from that path
+    --- @param path string #A path to place the .norg file in
     create_file = function(path)
         -- Grab the current workspace's full path
         local fullpath = module.public.get_current_workspace()[2]
@@ -291,10 +291,10 @@ module.public = {
         end
     end,
 
-    -- @Summary Open a Neorg file
-    -- @Description Takes in a workspace name and a path for a file and opens it
-    -- @Param  workspace_name (string) - the name of the workspace to use
-    -- @Param  path (string) - a path to open the file (e.g directory/filename.norg)
+    --- Open a Neorg file
+    -- Takes in a workspace name and a path for a file and opens it
+    --- @param workspace_name string #The name of the workspace to use
+    --- @param path string #A path to open the file (e.g directory/filename.norg)
     open_file = function(workspace_name, path)
         local workspace = module.public.get_workspace(workspace_name)
         if workspace == nil then
@@ -303,8 +303,8 @@ module.public = {
         vim.cmd("e " .. workspace .. "/" .. path .. " | w")
     end,
 
-    -- @Summary Sets the current workspace to the last cached workspace
-    -- @Description Reads the neorg_last_workspace.txt file and loads the cached workspace from there
+    --- Sets the current workspace to the last cached workspace
+    -- Reads the neorg_last_workspace.txt file and loads the cached workspace from there
     set_last_workspace = function()
         -- Attempt to open the last workspace cache file in read-only mode
         vim.loop.fs_open(module.config.public.last_workspace, "r", 438, function(err, fd)

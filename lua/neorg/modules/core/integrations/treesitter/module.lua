@@ -309,19 +309,19 @@ module.load = function()
 
         --
         -- for language, shorthands in pairs(langs) do
-        --     for _, shorthand in ipairs(shorthands) do
-        --         table.insert(
-        --             injections,
-        --             (
-        --                 [[(ranged_tag (tag_name) @_tagname (tag_parameters (word) @_language) (ranged_tag_content) @%s (#eq? @_tagname "code") (#eq? @_language "%s"))]]
-        --             ):format(language, shorthand)
-        --         )
-        --     end
+        -- for _, shorthand in ipairs(shorthands) do
+        -- table.insert(
+        -- injections,
+        -- (
+        -- [[(ranged_tag (tag_name) @_tagname (tag_parameters (word) @_language) (ranged_tag_content) @%s (#eq? @_tagname "code") (#eq? @_language "%s"))]]
+        -- ):format(language, shorthand)
+        -- )
+        -- end
         -- end
 
         -- table.insert(
-        --     injections,
-        --     [[(ranged_tag (tag_name) @_tagname (tag_parameters (word) @language) (ranged_tag_content) @content (#eq? @_tagname "code"))]]
+        -- injections,
+        -- [[(ranged_tag (tag_name) @_tagname (tag_parameters (word) @language) (ranged_tag_content) @content (#eq? @_tagname "code"))]]
         -- )
 
         -- vim.treesitter.set_query("norg", "injections", table.concat(injections, "\n"))
@@ -367,9 +367,9 @@ module.public = {
         end
     end,
 
-    -- @Summary Gets all nodes of a given type from the AST
-    -- @Description Retrieves all nodes in the form of a list
-    -- @Param  type (string) - the type of node to filter out
+    --- Gets all nodes of a given type from the AST
+    -- Retrieves all nodes in the form of a list
+    --- @param type string #The type of node to filter out
     get_all_nodes = function(type)
         local result = {}
 
@@ -378,9 +378,9 @@ module.public = {
             -- Get the root for that tree
             local root = tree:root()
 
-            -- @Summary Function to recursively descend down the syntax tree
-            -- @Description Recursively searches for a node of a given type
-            -- @Param  node (userdata/treesitter node) - the starting point for the search
+            --- Function to recursively descend down the syntax tree
+            -- Recursively searches for a node of a given type
+            --- @param node userdata/treesitter node #The starting point for the search
             local function descend(node)
                 -- Iterate over all children of the node and try to match their type
                 for child, _ in node:iter_children() do
@@ -401,9 +401,9 @@ module.public = {
         return result
     end,
 
-    -- @Summary Returns the first occurence of a node in the AST
-    -- @Description Returns the first node of given type if present
-    -- @Param  type (string) - the type of node to search for
+    --- Returns the first occurence of a node in the AST
+    -- Returns the first node of given type if present
+    --- @param type string #The type of node to search for
     get_first_node = function(type)
         local ret = nil
 
@@ -430,9 +430,9 @@ module.public = {
             -- Get the root for that tree
             local root = tree:root()
 
-            -- @Summary Function to recursively descend down the syntax tree
-            -- @Description Recursively searches for a node of a given type
-            -- @Param  node (userdata/treesitter node) - the starting point for the search
+            --- Function to recursively descend down the syntax tree
+            -- Recursively searches for a node of a given type
+            --- @param node userdata/treesitter node #The starting point for the search
             local function descend(node)
                 -- Iterate over all children of the node and try to match their type
                 for child, _ in node:iter_children() do
@@ -456,9 +456,9 @@ module.public = {
         return result
     end,
 
-    -- @Summary Returns metadata for a tag
-    -- @Description Given a node this function will break down the AST elements and return the corresponding text for certain nodes
-    -- @Param  tag_node (userdata/treesitter node) - a node of type tag/carryover_tag
+    --- Returns metadata for a tag
+    -- Given a node this function will break down the AST elements and return the corresponding text for certain nodes
+    --- @param tag_node userdata/treesitter node #A node of type tag/carryover_tag
     get_tag_info = function(tag_node, check_parent)
         if not tag_node or (tag_node:type() ~= "tag" and tag_node:type() ~= "carryover_tag") then
             return nil
@@ -516,9 +516,9 @@ module.public = {
         }
     end,
 
-    -- @Summary Parses data from an @ tag
-    -- @Description Used to extract data from e.g. document.meta
-    -- @Param  tag_content (string) - the content of the tag (without the beginning and end declarations)
+    --- Parses data from an @ tag
+    -- Used to extract data from e.g. document.meta
+    --- @param tag_content string #The content of the tag (without the beginning and end declarations)
     parse_tag = function(tag_content)
         local result = {}
 
@@ -531,7 +531,7 @@ module.public = {
         return result
     end,
 
-    -- @Summary Invokes a callback for every element of the current tree
+    --- Invokes a callback for every element of the current tree
     -- @Param  callback (function(node)) - the callback to invoke
     -- TODO: docs
     tree_map = function(callback, ts_tree)

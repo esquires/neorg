@@ -1,7 +1,7 @@
 --[[
---	NEORG MODULE MANAGER
---	This file is responsible for loading, calling and managing modules
---	Modules are internal mini-programs that execute on certain events, they build the foundation of neorg itself.
+-- NEORG MODULE MANAGER
+-- This file is responsible for loading, calling and managing modules
+-- Modules are internal mini-programs that execute on certain events, they build the foundation of neorg itself.
 --]]
 
 -- Include the global logger instance
@@ -10,17 +10,17 @@ local log = require("neorg.external.log")
 require("neorg.modules.base")
 
 --[[
---	The reason we do not just call this variable neorg.modules.loaded_modules.count is because
---	someone could make a module called "count" and override the variable, causing bugs.
+-- The reason we do not just call this variable neorg.modules.loaded_modules.count is because
+-- someone could make a module called "count" and override the variable, causing bugs.
 --]]
 neorg.modules.loaded_module_count = 0
 
 -- The table of currently loaded modules
 neorg.modules.loaded_modules = {}
 
--- @Summary Loads and enables a module
--- @Description Loads a specified module. If the module subscribes to any events then they will be activated too.
--- @Param  module (table) - the actual module to load
+--- Loads and enables a module
+-- Loads a specified module. If the module subscribes to any events then they will be activated too.
+--- @param module table #The actual module to load
 function neorg.modules.load_module_from_table(module)
     log.info("Loading module with name", module.name)
 
@@ -50,9 +50,9 @@ function neorg.modules.load_module_from_table(module)
     end
 
     --[[
-	--	This small snippet of code creates a copy of an already loaded module with the same name.
-	--	If the module wants to replace an already loaded module then we need to create a deepcopy of that old module
-	--	in order to stop it from getting overwritten.
+	-- This small snippet of code creates a copy of an already loaded module with the same name.
+	-- If the module wants to replace an already loaded module then we need to create a deepcopy of that old module
+	-- in order to stop it from getting overwritten.
 	--]]
     local module_to_replace
 
@@ -143,12 +143,12 @@ function neorg.modules.load_module_from_table(module)
     return true
 end
 
--- @Summary Loads a module from disk
--- @Description Unlike load_module_from_table(), which loads a module from memory, load_module() tries to find the corresponding module file on disk and loads it into memory.
+--- Loads a module from disk
+-- Unlike load_module_from_table(), which loads a module from memory, load_module() tries to find the corresponding module file on disk and loads it into memory.
 -- If the module cannot not be found, attempt to load it off of github (unimplemented). This function also applies user-defined configurations and keymaps to the modules themselves.
 -- This is the recommended way of loading modules - load_module_from_table() should only really be used by neorg itself.
--- @Param  module_name (string) - a path to a module on disk. A path seperator in neorg is '.', not '/'
--- @Param  config (table) - a configuration that reflects the structure of neorg.configuration.user_configuration.load["module.name"].config
+--- @param module_name string #A path to a module on disk. A path seperator in neorg is '.', not '/'
+--- @param config table #A configuration that reflects the structure of neorg.configuration.user_configuration.load["module.name"].config
 function neorg.modules.load_module(module_name, config)
     -- Don't bother loading the module from disk if it's already loaded
     if neorg.modules.is_module_loaded(module_name) then
@@ -191,10 +191,10 @@ function neorg.modules.load_module(module_name, config)
     return neorg.modules.load_module_from_table(module)
 end
 
--- @Summary Loads a preloaded module as a dependency of another module.
--- @Description Has the same principle of operation as load_module_from_table(), except it then sets up the parent module's "required" table, allowing the parent to access the child as if it were a dependency.
--- @Param  module (table) - a valid table as returned by neorg.modules.create()
--- @Param  parent_module (string or table) - if a string, then the parent is searched for in the loaded modules. If a table, then the module is treated as a valid module as returned by neorg.modules.create()
+--- Loads a preloaded module as a dependency of another module.
+-- Has the same principle of operation as load_module_from_table(), except it then sets up the parent module's "required" table, allowing the parent to access the child as if it were a dependency.
+--- @param module table #A valid table as returned by neorg.modules.create()
+--- @param parent_module string or table #If a string, then the parent is searched for in the loaded modules. If a table, then the module is treated as a valid module as returned by neorg.modules.create()
 function neorg.modules.load_module_as_dependency_from_table(module, parent_module)
     if neorg.modules.load_module_from_table(module) then
         if type(parent_module) == "string" then
@@ -205,20 +205,20 @@ function neorg.modules.load_module_as_dependency_from_table(module, parent_modul
     end
 end
 
--- @Summary Loads a module as a dependency of another module
--- @Description Normally loads a module, but then sets up the parent module's "required" table, allowing the parent module to access the child as if it were a dependency.
--- @Param  module_name (string) - a path to a module on disk. A path seperator in neorg is '.', not '/'
--- @Param  parent_module (string) - the name of the parent module. This is the module which the dependency will be attached to.
--- @Param  config (table) - a configuration that reflects the structure of neorg.configuration.user_configuration.load["module.name"].config
+--- Loads a module as a dependency of another module
+-- Normally loads a module, but then sets up the parent module's "required" table, allowing the parent module to access the child as if it were a dependency.
+--- @param module_name string #A path to a module on disk. A path seperator in neorg is '.', not '/'
+--- @param parent_module string #The name of the parent module. This is the module which the dependency will be attached to.
+--- @param config table #A configuration that reflects the structure of neorg.configuration.user_configuration.load["module.name"].config
 function neorg.modules.load_module_as_dependency(module_name, parent_module, config)
     if neorg.modules.load_module(module_name, config) and neorg.modules.is_module_loaded(parent_module) then
         neorg.modules.loaded_modules[parent_module].required[module_name] = neorg.modules.get_module_config(module_name)
     end
 end
 
--- @Summary Gets the public API of a module by name
--- @Description Retrieves the public API exposed by the module
--- @Param  module_name (string) - the name of the module to retrieve
+--- Gets the public API of a module by name
+-- Retrieves the public API exposed by the module
+--- @param module_name string #The name of the module to retrieve
 function neorg.modules.get_module(module_name)
     if not neorg.modules.is_module_loaded(module_name) then
         log.warn("Attempt to get module with name", module_name, "failed - module is not loaded.")
@@ -228,9 +228,9 @@ function neorg.modules.get_module(module_name)
     return neorg.modules.loaded_modules[module_name].public
 end
 
--- @Summary Retrieves the public configuration of a module
--- @Description Returns the module.config.public table if the module is loaded
--- @Param  module_name (string) - the name of the module to retrieve (module must be loaded)
+--- Retrieves the public configuration of a module
+-- Returns the module.config.public table if the module is loaded
+--- @param module_name string #The name of the module to retrieve (module must be loaded)
 function neorg.modules.get_module_config(module_name)
     if not neorg.modules.is_module_loaded(module_name) then
         log.warn("Attempt to get module configuration with name", module_name, "failed - module is not loaded.")
@@ -240,16 +240,16 @@ function neorg.modules.get_module_config(module_name)
     return neorg.modules.loaded_modules[module_name].config.public
 end
 
--- @Summary Check whether a module is loaded
--- @Description Returns true if module with name module_name is loaded, false otherwise
--- @Param  module_name (string) - the name of an arbitrary module
+--- Check whether a module is loaded
+-- Returns true if module with name module_name is loaded, false otherwise
+--- @param module_name string #The name of an arbitrary module
 function neorg.modules.is_module_loaded(module_name)
     return neorg.modules.loaded_modules[module_name] ~= nil
 end
 
--- @Summary Gets the version of a module
--- @Description Reads the module's public table and looks for a version variable, then converts it from a string into a table, like so: { major = <number>, minor = <number>, patch = <number> }
--- @Param  module_name (string) - the name of a valid, loaded module.
+--- Gets the version of a module
+-- Reads the module's public table and looks for a version variable, then converts it from a string into a table, like so: { major = <number>, minor = <number>, patch = <number> }
+--- @param module_name string #The name of a valid, loaded module.
 -- @Return struct | nil (if any error occurs)
 function neorg.modules.get_module_version(module_name)
     -- If the module isn't loaded then don't bother retrieving its version

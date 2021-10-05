@@ -1,7 +1,7 @@
 --[[
---	NEORG EVENT FILE
---	This file is responsible for dealing with event handling and broadcasting.
---	All modules that subscribe to an event will receive it once it is triggered.
+-- NEORG EVENT FILE
+-- This file is responsible for dealing with event handling and broadcasting.
+-- All modules that subscribe to an event will receive it once it is triggered.
 --]]
 
 -- Include the global instance of the logger
@@ -28,10 +28,10 @@ neorg.events.base_event = {
     line_content = "",
 }
 
--- @Summary Splits a full module event path into two
--- @Description The working of this function is best illustrated with an example:
---		If type == 'core.some_plugin.events.my_event', this function will return { 'core.some_plugin', 'my_event' }
--- @Param  type (string) - the full path of a module event
+--- Splits a full module event path into two
+-- The working of this function is best illustrated with an example:
+-- If type == 'core.some_plugin.events.my_event', this function will return { 'core.some_plugin', 'my_event' }
+--- @param type string #The full path of a module event
 function neorg.events.split_event_type(type)
     local start_str, end_str = type:find("%.events%.")
 
@@ -45,10 +45,10 @@ function neorg.events.split_event_type(type)
     return split_event_type
 end
 
--- @Summary Returns an event template as defined by a module
--- @Description Returns an event template defined in module.events.defined
--- @Param  module (table) - a reference to the module invoking the function
--- @Param  type (string) - a full path to a valid event type (e.g. 'core.module.events.some_event')
+--- Returns an event template as defined by a module
+-- Returns an event template defined in module.events.defined
+--- @param module table #A reference to the module invoking the function
+--- @param type string #A full path to a valid event type (e.g. 'core.module.events.some_event')
 function neorg.events.get_event_template(module, type)
     -- You can't get the event template of a type if the type isn't loaded
     if not neorg.modules.is_module_loaded(module.name) then
@@ -70,10 +70,10 @@ function neorg.events.get_event_template(module, type)
     return neorg.modules.loaded_modules[module.name].events.defined[split_type[2]]
 end
 
--- @Summary Creates an event that derives from neorg.events.base_event
--- @Description Creates a deep copy of the neorg.events.base_event event and returns it with a custom type and referrer
--- @Param  module (table) - a reference to the module invoking the function
--- @Param  name (string) - a relative path to a valid event template
+--- Creates an event that derives from neorg.events.base_event
+-- Creates a deep copy of the neorg.events.base_event event and returns it with a custom type and referrer
+--- @param module table #A reference to the module invoking the function
+--- @param name string #A relative path to a valid event template
 function neorg.events.define(module, name)
     -- Create a copy of the base event and override the values with ones specified by the user
 
@@ -90,11 +90,11 @@ function neorg.events.define(module, name)
     return new_event
 end
 
--- @Summary Creates an instance of an event type
--- @Description Returns a copy of the event template provided by a module
--- @Param  module (table) - a reference to the module invoking the function
--- @Param  type (string) - a full path to a valid event type (e.g. 'core.module.events.some_event')
--- @Param  content (any) - the content of the event, can be anything from a string to a table to whatever you please
+--- Creates an instance of an event type
+-- Returns a copy of the event template provided by a module
+--- @param module table #A reference to the module invoking the function
+--- @param type string #A full path to a valid event type (e.g. 'core.module.events.some_event')
+--- @param content any #The content of the event, can be anything from a string to a table to whatever you please
 function neorg.events.create(module, type, content)
     -- Get the module that contains the event
     local module_name = neorg.events.split_event_type(type)[1]
@@ -128,9 +128,9 @@ function neorg.events.create(module, type, content)
     return new_event
 end
 
--- @Summary Broadcasts an event
--- @Description Sends an event to all subscribed modules. The event contains the filename, filehead, cursor position and line content as a bonus.
--- @Param  event (table) - an event, usually created by neorg.events.create()
+--- Broadcasts an event
+-- Sends an event to all subscribed modules. The event contains the filename, filehead, cursor position and line content as a bonus.
+--- @param event table #An event, usually created by neorg.events.create()
 function neorg.events.broadcast_event(event)
     -- Asynchronously broadcast the event to all modules
     require("plenary.async_lib.async").async(function()
@@ -158,11 +158,11 @@ function neorg.events.broadcast_event(event)
     end)()()
 end
 
--- @Summary Sends an event to an individual module
--- @Description Instead of broadcasting to all loaded modules, send_event() only sends to one module
--- @Param  module (table) - a reference to the module invoking the function. Used to verify the authenticity of the function call
--- @Param  recipient (string) - the name of a loaded module that will be the recipient of the event
--- @Param  event (table) - an event, usually created by neorg.events.create()
+--- Sends an event to an individual module
+-- Instead of broadcasting to all loaded modules, send_event() only sends to one module
+--- @param module table #A reference to the module invoking the function. Used to verify the authenticity of the function call
+--- @param recipient string #The name of a loaded module that will be the recipient of the event
+--- @param event table #An event, usually created by neorg.events.create()
 function neorg.events.send_event(recipient, event)
     -- If the recipient is not loaded then there's no reason to send an event to it
     if not neorg.modules.is_module_loaded(recipient) then

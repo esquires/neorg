@@ -78,10 +78,10 @@ local log = require("neorg.external.log")
 
 local module = neorg.modules.create("core.neorgcmd")
 
--- @Summary Generate autocompletions for the :Neorg command
--- @Description This global function returns all available commands to be used for the :Neorg command
--- @Param  _ (nil) - placeholder variable
--- @Param  command (string) - supplied by nvim itself; the full typed out command
+--- Generate autocompletions for the :Neorg command
+-- This global function returns all available commands to be used for the :Neorg command
+--- @param _ nil #Placeholder variable
+--- @param command string #Supplied by nvim itself; the full typed out command
 function _neorgcmd_generate_completions(_, command)
     -- If core.neorgcmd is not loaded do not provide completion
     if not neorg.modules.is_module_loaded("core.neorgcmd") then
@@ -173,9 +173,9 @@ module.public = {
     -- The table containing all the functions. This can get a tad complex so I recommend you read the wiki entry
     neorg_commands = {},
 
-    -- @Summary Adds custom commands for core.neorgcmd to use
-    -- @Description Recursively merges the contents of the module's config.public.funtions table with core.neorgcmd's module.config.public.neorg_commands table.
-    -- @Param  module_name (string) - an absolute path to a loaded module with a module.config.public.neorg_commands table following a valid structure
+    --- Adds custom commands for core.neorgcmd to use
+    -- Recursively merges the contents of the module's config.public.funtions table with core.neorgcmd's module.config.public.neorg_commands table.
+    --- @param module_name string #An absolute path to a loaded module with a module.config.public.neorg_commands table following a valid structure
     add_commands = function(module_name)
         local module_config = neorg.modules.get_module(module_name)
 
@@ -190,16 +190,16 @@ module.public = {
         )
     end,
 
-    -- @Summary Adds custom commands for core.neorgcmd to use
-    -- @Description Recursively merges the provided table with the module.config.public.neorg_commands table.
-    -- @Param  functions (table) - a table that follows the module.config.public.neorg_commands structure
+    --- Adds custom commands for core.neorgcmd to use
+    -- Recursively merges the provided table with the module.config.public.neorg_commands table.
+    --- @param functions table #A table that follows the module.config.public.neorg_commands structure
     add_commands_from_table = function(functions)
         module.public.neorg_commands = vim.tbl_deep_extend("force", module.public.neorg_commands, functions)
     end,
 
-    -- @Summary Adds custom commands for core.neorgcmd to use
-    -- @Description Takes a relative path (e.g "list.modules") and loads it from the commands/ directory
-    -- @Param  name (string) - the relative path of the module we want to load
+    --- Adds custom commands for core.neorgcmd to use
+    -- Takes a relative path (e.g "list.modules") and loads it from the commands/ directory
+    --- @param name string #The relative path of the module we want to load
     add_commands_from_file = function(name)
         -- Attempt to require the file
         local err, ret = pcall(require, "neorg.modules.core.neorgcmd.commands." .. name .. ".module")
@@ -218,8 +218,8 @@ module.public = {
         neorg.modules.load_module_from_table(ret)
     end,
 
-    -- @Summary Updates autocompletion
-    -- @Description Rereads data from all modules and rebuild the list of available autocompletions and commands
+    --- Updates autocompletion
+    -- Rereads data from all modules and rebuild the list of available autocompletions and commands
     sync = function()
         -- Loop through every loaded module and set up all their commands
         for _, mod in pairs(neorg.modules.loaded_modules) do
@@ -229,27 +229,27 @@ module.public = {
         end
     end,
 
-    -- @Summary The callback function whenever the :Neorg command is executed
-    -- @Description Handles the calling of the appropriate function based on the command the user entered
+    --- The callback function whenever the :Neorg command is executed
+    -- Handles the calling of the appropriate function based on the command the user entered
     -- @Param  ... (varargs) - the contents of <f-args> provided by nvim itself
     function_callback = function(...)
         -- Unpack the varargs into a table
         local args = { ... }
 
         --[[
-		--	Ok, this is where things get messy. Read the comments from the _neorgcmd_generate_completions()
-		--	function to get a decent grasp of the code below. Before you ask, yes, all these variables
-		--	here are necessary in order for the function to work. Time to explain them one by one:
-		--		ref_definitions - a reference to the module.config.public.neorg_commands.definitions table, recursive reference assignment is done here.
-		--			It's used to track where we are recursively in the table. It's also used to build a valid event string and to test whether the supplied
-		--			commands and subcommands actually exist.
-		--		ref_data - a reference to the module.config.public.neorg_commands.data table. It's used to recursively enter the "subcommands" tables and
-		--			tell the for loop below when to bail out and stop parsing further.
-		--		ref_data_one_above - the same as ref_data, except used for a different purpose. As the name suggests, this variable is a reference to one level above ref_data.
-		--			You still with me? This variable is used to read the metadata present in the neorg_commands.data table, it doesn't instantly enter the "subcommands" table like ref_data
-		--			does.
-		--		event_name - the current event string. Tracks the tail of the command we're executing.
-		--		current_depth - the current recursion depth. Used to track what is a command/subcommand and what are arguments.
+		-- Ok, this is where things get messy. Read the comments from the _neorgcmd_generate_completions()
+		-- function to get a decent grasp of the code below. Before you ask, yes, all these variables
+		-- here are necessary in order for the function to work. Time to explain them one by one:
+		-- ref_definitions - a reference to the module.config.public.neorg_commands.definitions table, recursive reference assignment is done here.
+		-- It's used to track where we are recursively in the table. It's also used to build a valid event string and to test whether the supplied
+		-- commands and subcommands actually exist.
+		-- ref_data - a reference to the module.config.public.neorg_commands.data table. It's used to recursively enter the "subcommands" tables and
+		-- tell the for loop below when to bail out and stop parsing further.
+		-- ref_data_one_above - the same as ref_data, except used for a different purpose. As the name suggests, this variable is a reference to one level above ref_data.
+		-- You still with me? This variable is used to read the metadata present in the neorg_commands.data table, it doesn't instantly enter the "subcommands" table like ref_data
+		-- does.
+		-- event_name - the current event string. Tracks the tail of the command we're executing.
+		-- current_depth - the current recursion depth. Used to track what is a command/subcommand and what are arguments.
 		--]]
         local ref_definitions = module.public.neorg_commands.definitions
         local ref_data = module.public.neorg_commands.data
@@ -361,9 +361,9 @@ module.public = {
         )
     end,
 
-    -- @Summary Overwrites the completion callback function
-    -- @Description Defines a custom completion function to use for core.neorgcmd.
-    -- @Param  callback (function) - the same function format as you would receive by being called by :command -completion=customlist,v:lua.callback Neorg
+    --- Overwrites the completion callback function
+    -- Defines a custom completion function to use for core.neorgcmd.
+    --- @param callback function #The same function format as you would receive by being called by :command -completion=customlist,v:lua.callback Neorg
     set_completion_callback = function(callback)
         _neorgcmd_generate_completions = callback
     end,

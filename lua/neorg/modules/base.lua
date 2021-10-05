@@ -1,6 +1,6 @@
 --[[
---	BASE FILE FOR MODULES
---	This file contains the base module implementation
+-- BASE FILE FOR MODULES
+-- This file contains the base module implementation
 --]]
 
 neorg.modules = {}
@@ -95,9 +95,9 @@ neorg.modules.module_base = {
     },
 }
 
--- @Summary Creates a new module
--- @Description Returns a module that derives from neorg.modules.module_base, exposing all the necessary function and variables
--- @Param  name (string) - the name of the new module. Make sure this is unique. The recommended naming convention is category.module_name or category.subcategory.module_name
+--- Creates a new module
+-- Returns a module that derives from neorg.modules.module_base, exposing all the necessary function and variables
+--- @param name string #The name of the new module. Make sure this is unique. The recommended naming convention is category.module_name or category.subcategory.module_name
 function neorg.modules.create(name)
     local new_module = {}
 
@@ -110,9 +110,9 @@ function neorg.modules.create(name)
     return new_module
 end
 
--- @Summary Creates a metamodule
--- @Description Constructs a metamodule from a list of submodules. Metamodules are modules that can autoload batches of modules at once.
--- @Param  name (string) - the name of the new metamodule. Make sure this is unique. The recommended naming convention is category.module_name or category.subcategory.module_name
+--- Creates a metamodule
+-- Constructs a metamodule from a list of submodules. Metamodules are modules that can autoload batches of modules at once.
+--- @param name string #The name of the new metamodule. Make sure this is unique. The recommended naming convention is category.module_name or category.subcategory.module_name
 -- @Param  ... (varargs) - a list of module names to load.
 function neorg.modules.create_meta(name, ...)
     local module = neorg.modules.create(name)

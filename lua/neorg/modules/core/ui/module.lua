@@ -4,8 +4,10 @@
 
 require("neorg.modules.base")
 
-local module = neorg.modules.create("core.ui")
-local utils = require("neorg.external.helpers")
+local module = neorg.modules.create("core.ui", {
+    "selection_popup",
+    "text_popup",
+})
 
 module.private = {
     windows = {},
@@ -13,9 +15,9 @@ module.private = {
 }
 
 module.public = {
-    -- @Summary Gets the current size of the window
-    -- @Description Returns a table in the form of { width, height } containing the width and height of the current window
-    -- @Param  half (boolean) - if true returns a position that could be considered the center of the window
+    --- Gets the current size of the window
+    -- Returns a table in the form of { width, height } containing the width and height of the current window
+    --- @param half boolean #If true returns a position that could be considered the center of the window
     get_window_size = function(half)
         return half
                 and {
@@ -25,11 +27,11 @@ module.public = {
             or { vim.api.nvim_win_get_width(0), vim.api.nvim_win_get_height(0) }
     end,
 
-    -- @Summary Applies a set of custom options to modify regular Neovim window opts
-    -- @Description Returns a modified version of floating window options.
-    -- @Param  modifiers (table) - this option set has two values - center_x and center_y.
-    --                           If they either of them is set to true then the window gets centered on that axis.
-    -- @Param  config (table) - a table containing regular Neovim options for a floating window
+    --- Applies a set of custom options to modify regular Neovim window opts
+    -- Returns a modified version of floating window options.
+    --- @param modifiers table #This option set has two values - center_x and center_y.
+    -- If they either of them is set to true then the window gets centered on that axis.
+    --- @param config table #A table containing regular Neovim options for a floating window
     apply_custom_options = function(modifiers, config)
         -- Default modifier options
         local user_options = {
@@ -56,9 +58,9 @@ module.public = {
         return config
     end,
 
-    -- @Summary Deletes a window that holds a specific buffer
-    -- @Description Attempts to force close the window that holds the specified buffer
-    -- @Param  buf (number) - the buffer ID whose parent window to close
+    --- Deletes a window that holds a specific buffer
+    -- Attempts to force close the window that holds the specified buffer
+    --- @param buf number #The buffer ID whose parent window to close
     delete_window = function(buf)
         -- Get the name of the buffer with the specified ID
         local name = vim.api.nvim_buf_get_name(buf)
@@ -109,8 +111,5 @@ module.public = {
         return buf
     end,
 }
-
-module = utils.require(module, "selection_popup")
-module = utils.require(module, "text_popup")
 
 return module

@@ -136,20 +136,20 @@ return function(module)
                 -- Loop through all flags
                 --
                 -- A flag table may look like this:
-                --  {
-                --      a = {
-                --          name = "Press me",
-                --          flags = {
-                --              r = {
-                --                  name = "A recursive flag",
-                --                  flags = {
-                --                      m = "More flags!"
-                --                  }
-                --              }
-                --              m = "More flags",
-                --          }
-                --      }
-                --  }
+                -- {
+                -- a = {
+                -- name = "Press me",
+                -- flags = {
+                -- r = {
+                -- name = "A recursive flag",
+                -- flags = {
+                -- m = "More flags!"
+                -- }
+                -- }
+                -- m = "More flags",
+                -- }
+                -- }
+                -- }
                 --
                 -- The top-level table element, "a", is the key you can press in order to execute an action.
                 -- The "name" variable is the description for that keybind. If it's not provided the description "No description"

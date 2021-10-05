@@ -1,6 +1,6 @@
 --[[
---	Scanner module for Neorg
---	This module is a very basic implementation of a scanner that can be used anywhere TS can't be used :)
+-- Scanner module for Neorg
+-- This module is a very basic implementation of a scanner that can be used anywhere TS can't be used :)
 --]]
 
 require("neorg.modules.base")

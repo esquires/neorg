@@ -1,13 +1,13 @@
 --[[
---	HELPER FUNCTIONS FOR NEORG
---	This file contains some simple helper function improve quality of life
+-- HELPER FUNCTIONS FOR NEORG
+-- This file contains some simple helper function improve quality of life
 --]]
 
 neorg.utils = {
-    -- @Summary Requires a file from the context of the current module
-    -- @Description Allows the module creator to require a file from within the module's cwd
-    -- @Param  module (table) - the module creator's module
-    -- @Param  filename (string) - a path to the file
+    --- Requires a file from the context of the current module
+    -- Allows the module creator to require a file from within the module's cwd
+    --- @param module table #The module creator's module
+    --- @param filename string #A path to the file
     require = function(module, filename)
         -- Here we perform a hacky double-require. You love to see it!
         -- We do this because there may be times where a module will reference
@@ -26,8 +26,8 @@ neorg.utils = {
         )
     end,
 
-    -- @Summary Gets the current system username
-    -- @Description An OS agnostic way of querying the current user
+    --- Gets the current system username
+    -- An OS agnostic way of querying the current user
     get_username = function()
         local current_os = require("neorg.config").os_info
 
@@ -44,9 +44,9 @@ neorg.utils = {
         return ""
     end,
 
-    -- @Summary Returns a list of languages supported by Neorg
-    -- @Description Returns an array of strings, the array being a list of languages that Neorg can inject
-    -- @Param  values (boolean) - if set to true will return an array of strings, if false will return a key-value table
+    --- Returns a list of languages supported by Neorg
+    -- Returns an array of strings, the array being a list of languages that Neorg can inject
+    --- @param values boolean #If set to true will return an array of strings, if false will return a key-value table
     get_language_list = function(values)
         local ret = {
             ["bash"] = {},

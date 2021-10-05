@@ -60,7 +60,7 @@ module.public = {
     --- @param node table
     --- @param node_type string
     --- @param opts table
-    ---   - opts.multiple (bool):  if true, will return all recursive parent nodes that match `node_type`
+    --- - opts.multiple (bool):  if true, will return all recursive parent nodes that match `node_type`
     --- @return table
     find_parent_node = function(node, node_type, opts)
         opts = opts or {}
@@ -82,7 +82,7 @@ module.public = {
     --- @param node table
     --- @param node_type string
     --- @param opts table
-    ---   - opts.where (table):     if provided will try the where stateement supplied
+    --- - opts.where (table):     if provided will try the where stateement supplied
     --- @return table
     find_sibling_node = function(node, node_type, opts)
         opts = opts or {}
@@ -200,7 +200,7 @@ module.private = {
     --- @param parent userdata
     --- @param query table
     --- @param opts table
-    ---   - opts.recursive (bool):      if true will recursively find the matching query
+    --- - opts.recursive (bool):      if true will recursively find the matching query
     --- @return table
     matching_query = function(parent, query, opts)
         opts = opts or {}
@@ -272,7 +272,7 @@ With that in mind, you can do something like this (for example):
     --- @param parent userdata
     --- @param where table
     --- @param opts table
-    ---   - opts.bufnr (number):    used in where[1] == "child_content" (in order to get the node's content)
+    --- - opts.bufnr (number):    used in where[1] == "child_content" (in order to get the node's content)
     --- @return boolean
     predicate_where = function(parent, where, opts)
         opts = opts or {}

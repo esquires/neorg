@@ -1,6 +1,6 @@
 --[[
---	ROOT NEORG FILE
---	This file is the beginning of the entire plugin. It's here that everything fires up and starts pumping.
+-- ROOT NEORG FILE
+-- This file is the beginning of the entire plugin. It's here that everything fires up and starts pumping.
 --]]
 
 -- Require the most important modules
@@ -10,9 +10,9 @@ require("neorg.modules")
 
 local configuration = require("neorg.config")
 
--- @Summary Sets up neorg
--- @Description This function takes in a user configuration, parses it, initializes everything and launches neorg if inside a .norg or .org file
--- @Param  config (table) - a table that reflects the structure of configuration.user_configuration
+--- Sets up neorg
+--- This function takes in a user configuration, parses it, initializes everything and launches neorg if inside a .norg or .org file
+--- @param config table #A table that reflects the structure of configuration.user_configuration
 function neorg.setup(config)
     configuration.user_configuration = config or {}
 
@@ -29,9 +29,9 @@ function neorg.setup(config)
     end
 end
 
--- @Summary Neorg startup function
--- @Description This function gets called upon entering a .norg file and loads all of the user-defined modules.
--- @Param manual (boolean) - if true then the environment was kickstarted manually by the user
+--- Neorg startup function
+--- This function gets called upon entering a .norg file and loads all of the user-defined modules.
+--- @param manual boolean #If true then the environment was kickstarted manually by the user
 function neorg.org_file_entered(manual)
     -- Extract the module list from the user configuration
     local module_list = configuration.user_configuration and configuration.user_configuration.load or {}

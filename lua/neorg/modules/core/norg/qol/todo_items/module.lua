@@ -78,11 +78,11 @@ module.public = {
         end
 
         -- [[
-        --  Compare the counter to the amount of done items.
-        --  If we have even one pending item then set the resulting char to `*`
-        --  If the counter is the same as the done item count then that means all items are complete and we should display a done item in the parent.
-        --  If the done item count is 0 then no task has been completed and we should set an undone item as the parent.
-        --  If all other checks fail and the done item count is less than the total number of todo items then set a pending item.
+        -- Compare the counter to the amount of done items.
+        -- If we have even one pending item then set the resulting char to `*`
+        -- If the counter is the same as the done item count then that means all items are complete and we should display a done item in the parent.
+        -- If the done item count is 0 then no task has been completed and we should set an undone item as the parent.
+        -- If all other checks fail and the done item count is less than the total number of todo items then set a pending item.
         -- ]]
 
         local resulting_char = ""

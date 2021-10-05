@@ -60,10 +60,10 @@ module.public = {
 
     keybinds = {},
 
-    -- @Summary Registers a new keybind
-    -- @Description Adds a new keybind to the database of known keybinds
-    -- @Param  module_name (string) - the name of the module that owns the keybind. Make sure it's an absolute path.
-    -- @Param  name (string) - the name of the keybind. The module_name will be prepended to this string to form a unique name.
+    --- Registers a new keybind
+    -- Adds a new keybind to the database of known keybinds
+    --- @param module_name string #The name of the module that owns the keybind. Make sure it's an absolute path.
+    --- @param name string #The name of the keybind. The module_name will be prepended to this string to form a unique name.
     register_keybind = function(module_name, name)
         -- Create the full keybind name
         local keybind_name = module_name .. "." .. name
@@ -80,10 +80,10 @@ module.public = {
         module.required["core.neorgcmd"].add_commands_from_table(module.public.neorg_commands)
     end,
 
-    -- @Summary Registers a batch of keybinds
-    -- @Description Like register_keybind(), except registers a batch of them
-    -- @Param  module_name (string) - the name of the module that owns the keybind. Make sure it's an absolute path.
-    -- @Param  names (list of strings) - a list of strings detailing names of the keybinds. The module_name will be prepended to each one to form a unique name.
+    --- Registers a batch of keybinds
+    -- Like register_keybind(), except registers a batch of them
+    --- @param module_name string #The name of the module that owns the keybind. Make sure it's an absolute path.
+    --- @param names list of strings #A list of strings detailing names of the keybinds. The module_name will be prepended to each one to form a unique name.
     register_keybinds = function(module_name, names)
         -- Loop through each name from the names argument
         for _, name in ipairs(names) do
@@ -103,7 +103,7 @@ module.public = {
         module.required["core.neorgcmd"].add_commands_from_table(module.public.neorg_commands)
     end,
 
-    -- @Summary Rebinds all the keys defined via User Callbacks
+    --- Rebinds all the keys defined via User Callbacks
     bind_all = function()
         -- If the table is already populated then don't populate it further
         if not vim.tbl_isempty(module.private.bound_keys) then
@@ -117,12 +117,12 @@ module.public = {
 
         payload = {
 
-            -- @Summary Maps a Neovim keybind.
-            -- @Description Allows Neorg to manage and track mapped keys.
-            -- @Param  mode (string) - same as the mode parameter for :h nvim_buf_set_keymap
-            -- @Param  key (string) - same as the lhs parameter for :h nvim_buf_set_keymap
-            -- @Param  command (string) - same as the rhs parameter for :h nvim_buf_set_keymap
-            -- @Param  opts (table) - same as the opts parameter for :h nvim_buf_set_keymap
+            --- Maps a Neovim keybind.
+            -- Allows Neorg to manage and track mapped keys.
+            --- @param mode string #Same as the mode parameter for :h nvim_buf_set_keymap
+            --- @param key string #Same as the lhs parameter for :h nvim_buf_set_keymap
+            --- @param command string #Same as the rhs parameter for :h nvim_buf_set_keymap
+            --- @param opts table #Same as the opts parameter for :h nvim_buf_set_keymap
             map = function(mode, key, command, opts)
                 vim.api.nvim_set_keymap(mode, key, command, opts or {})
 
@@ -130,11 +130,11 @@ module.public = {
                 table.insert(module.private.bound_keys, { mode, key })
             end,
 
-            -- @Summary Maps a bunch of keys for a certain mode
-            -- @Description An advanced wrapper around the map() function, maps several keys if the current neorg mode is the desired one
-            -- @Param  mode (string) - the neorg mode to bind the keys on
-            -- @Param  keys (table { <neovim_mode> = { { "<key>", "<name-of-keybind>" } } }) - a table of keybinds
-            -- @Param  opts (table) - the same parameters that should be passed into vim.api.nvim_set_keymap()'s opts parameter
+            --- Maps a bunch of keys for a certain mode
+            -- An advanced wrapper around the map() function, maps several keys if the current neorg mode is the desired one
+            --- @param mode string #The neorg mode to bind the keys on
+            --- @param keys table { <neovim_mode> = { { "<key>", "<name-of-keybind>" } } } #A table of keybinds
+            --- @param opts table #The same parameters that should be passed into vim.api.nvim_set_keymap()'s opts parameter
             map_to_mode = function(mode, keys, opts)
                 -- If the keys table is empty then don't bother doing any parsing
                 if vim.tbl_isempty(keys) then
@@ -154,11 +154,11 @@ module.public = {
                 end
             end,
 
-            -- @Summary Maps a bunch of keys for a certain mode
-            -- @Description An advanced wrapper around the map() function, maps several keys if the current neorg mode is the desired one
-            -- @Param  mode (string) - the neorg mode to bind the keys on
-            -- @Param  keys (table { <neovim_mode> = { { "<key>", "<name-of-keybind>" } } }) - a table of keybinds
-            -- @Param  opts (table) - the same parameters that should be passed into vim.api.nvim_set_keymap()'s opts parameter
+            --- Maps a bunch of keys for a certain mode
+            -- An advanced wrapper around the map() function, maps several keys if the current neorg mode is the desired one
+            --- @param mode string #The neorg mode to bind the keys on
+            --- @param keys table { <neovim_mode> = { { "<key>", "<name-of-keybind>" } } } #A table of keybinds
+            --- @param opts table #The same parameters that should be passed into vim.api.nvim_set_keymap()'s opts parameter
             map_event_to_mode = function(mode, keys, opts)
                 -- If the keys table is empty then don't bother doing any parsing
                 if vim.tbl_isempty(keys) then
@@ -194,12 +194,12 @@ module.public = {
         if type(module.config.public.default_keybinds) == "table" then
             -- Go through each mode, since the table should look like:
             -- <mode> = {
-            --  <keybind> = {
-            --   event = 'core.integrations.treesitter.next.heading',
-            --   mode = 'all', -- Only works when the 'event key is provided'
-            --   OR
-            --   action = '<cmd>lua print("Hello world!")<CR>'
-            --  }
+            -- <keybind> = {
+            -- event = 'core.integrations.treesitter.next.heading',
+            -- mode = 'all', -- Only works when the 'event key is provided'
+            -- OR
+            -- action = '<cmd>lua print("Hello world!")<CR>'
+            -- }
             -- }
             for mode, keybinds in pairs(module.config.public.default_keybinds) do
                 -- Go through every keybind and extract its data
@@ -239,9 +239,9 @@ module.public = {
         end
     end,
 
-    -- @Summary Unbind all currently defined keys
-    -- @Description If the user has used the map() function, as they should have, Neorg will have tracked all the currently bound keymaps.
-    --				Thanks to this function all those keys will be cleared as a result of e.g. a mode change.
+    --- Unbind all currently defined keys
+    -- If the user has used the map() function, as they should have, Neorg will have tracked all the currently bound keymaps.
+    -- Thanks to this function all those keys will be cleared as a result of e.g. a mode change.
     unbind_all = function()
         -- Loop through every currently defined keybind and unbind it
         for _, mode_key_pair in ipairs(module.private.bound_keys) do
@@ -252,8 +252,8 @@ module.public = {
         module.private.bound_keys = {}
     end,
 
-    -- @Summary Synchronizes all autocompletions
-    -- @Description Updates the list of known modes and keybinds for easy autocompletion. Invoked automatically during neorg_post_load().
+    --- Synchronizes all autocompletions
+    -- Updates the list of known modes and keybinds for easy autocompletion. Invoked automatically during neorg_post_load().
     sync = function()
         -- Reset all the autocompletions
         module.public.neorg_commands.definitions.keybind = {}

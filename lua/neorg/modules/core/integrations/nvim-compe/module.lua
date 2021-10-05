@@ -28,8 +28,8 @@ module.load = function()
 end
 
 module.public = {
-    -- @Summary Creates a new nvim-compe source
-    -- @Param  user_data (table) - a table of user data to supply to the source upon creation
+    --- Creates a new nvim-compe source
+    --- @param user_data table #A table of user data to supply to the source upon creation
     create_source = function(user_data)
         user_data = user_data or {}
 
@@ -77,9 +77,9 @@ module.public = {
         module.private.compe.register_source("neorg", module.private.source)
     end,
 
-    -- @Summary Used to determine whether or not to provide completions
-    -- @Description Looks at the cursor position and tries to determine whether we should provide any completions
-    -- @Param  context (table) - the context provided by nvim-compe
+    --- Used to determine whether or not to provide completions
+    -- Looks at the cursor position and tries to determine whether we should provide any completions
+    --- @param context table #The context provided by nvim-compe
     determine = function(context)
         -- Abstract away the context to a completion engine agnostic format
         local abstracted_context = module.public.create_abstracted_context(context)
@@ -125,9 +125,9 @@ module.public = {
         return { keyword_pattern_offset = 0, trigger_character_offset = context.col - last_whitespace }
     end,
 
-    -- @Summary Completes the items from the completion cache
-    -- @Description Once the completion candidates have been collected from the determine() function it's time to display them
-    -- @Param  context (table) - a context as provided by nvim-compe
+    --- Completes the items from the completion cache
+    -- Once the completion candidates have been collected from the determine() function it's time to display them
+    --- @param context table #A context as provided by nvim-compe
     complete = function(context)
         -- If the completion cache is empty for some reason then don't do anything
         if vim.tbl_isempty(module.private.completion_cache.items) then
@@ -148,8 +148,8 @@ module.public = {
         })
     end,
 
-    -- @Summary Invoked whenever a completion item is confirmed
-    -- @Param  context (table) - a context as provided by nvim-compe
+    --- Invoked whenever a completion item is confirmed
+    --- @param context table #A context as provided by nvim-compe
     confirm = function(context)
         -- If the defined completion has a post function then invoke it
         if module.private.completion_cache.options.post then
@@ -160,9 +160,9 @@ module.public = {
         module.private.completion_cache = {}
     end,
 
-    -- @Summary Creates a completion engine agnostic representation of a context
-    -- @Description Returns a new context based off of nvim-compe's "proprietary" context and converts it into a universal context
-    -- @Param  context (table) - a context as provided by nvim-compe
+    --- Creates a completion engine agnostic representation of a context
+    -- Returns a new context based off of nvim-compe's "proprietary" context and converts it into a universal context
+    --- @param context table #A context as provided by nvim-compe
     create_abstracted_context = function(context)
         return {
             start_offset = context.start_offset,

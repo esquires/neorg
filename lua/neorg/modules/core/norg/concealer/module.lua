@@ -314,9 +314,9 @@ module.config.public = {
 module.load = function()
     local get_enabled_icons
 
-    -- @Summary Returns all the enabled icons from a table
-    -- @Param  tbl (table) - the table to parse
-    -- @Param rec_name (string) - should not be set manually. Is used for Neorg to have information about all other previous recursions
+    --- Returns all the enabled icons from a table
+    --- @param tbl table #The table to parse
+    --- @param rec_name string #Should not be set manually. Is used for Neorg to have information about all other previous recursions
     get_enabled_icons = function(tbl, rec_name)
         rec_name = rec_name or ""
 
@@ -358,8 +358,8 @@ end
 
 module.public = {
 
-    -- @Summary Activates icons for the current window
-    -- @Description Parses the user configuration and enables concealing for the current window.
+    --- Activates icons for the current window
+    -- Parses the user configuration and enables concealing for the current window.
     trigger_icons = function()
         -- Clear all the conceals beforehand (so no overlaps occur)
         module.public.clear_icons()
@@ -484,16 +484,16 @@ module.public = {
         end
     end,
 
-    -- @Summary Sets an extmark in the buffer
-    -- @Description Mostly a wrapper around vim.api.nvim_buf_set_extmark in order to make it more safe
-    -- @Param  text (string|table) - the virtual text to overlay (usually the icon)
-    -- @Param  highlight (string) - the name of a highlight to use for the icon
-    -- @Param  line_number (number) - the line number to apply the extmark in
-    -- @Param  end_line (number) - the last line number to apply the extmark to (useful if you want an extmark to exist for more than one line)
-    -- @Param  start_column (number) - the start column of the conceal
-    -- @Param  end_column (number) - the end column of the conceal
-    -- @Param  whole_line (boolean) - if true will highlight the whole line (like in diffs)
-    -- @Param  mode (string: "replace"/"combine"/"blend") - the highlight mode for the extmark
+    --- Sets an extmark in the buffer
+    -- Mostly a wrapper around vim.api.nvim_buf_set_extmark in order to make it more safe
+    --- @param text string|table #The virtual text to overlay (usually the icon)
+    --- @param highlight string #The name of a highlight to use for the icon
+    --- @param line_number number #The line number to apply the extmark in
+    --- @param end_line number #The last line number to apply the extmark to (useful if you want an extmark to exist for more than one line)
+    --- @param start_column number #The start column of the conceal
+    --- @param end_column number #The end column of the conceal
+    --- @param whole_line boolean #If true will highlight the whole line (like in diffs)
+    --- @param mode string: "replace"/"combine"/"blend" #The highlight mode for the extmark
     _set_extmark = function(text, highlight, line_number, end_line, start_column, end_column, whole_line, mode)
         -- If the text type is a string then convert it into something that Neovim's extmark API can understand
         if type(text) == "string" then
@@ -517,14 +517,14 @@ module.public = {
         end
     end,
 
-    -- @Summary Clears all the conceals that neorg has defined
-    -- @Description Simply clears the Neorg extmark namespace
+    --- Clears all the conceals that neorg has defined
+    -- Simply clears the Neorg extmark namespace
     clear_icons = function()
         vim.api.nvim_buf_clear_namespace(0, module.private.namespace, 0, -1)
     end,
 
-    -- @Summary Triggers conceals for the current buffer
-    -- @Description Reads through the user configuration and enables concealing for the current buffer
+    --- Triggers conceals for the current buffer
+    -- Reads through the user configuration and enables concealing for the current buffer
     trigger_conceals = function()
         local conceals = module.config.public.conceals
 
@@ -596,8 +596,8 @@ module.public = {
         end
     end,
 
-    -- @Summary Clears conceals for the current buffer
-    -- @Description Clears all highlight groups related to the Neorg conceal higlight groups
+    --- Clears conceals for the current buffer
+    -- Clears all highlight groups related to the Neorg conceal higlight groups
     clear_conceals = function()
         vim.cmd([[
         silent! syn clear NeorgConcealURL
