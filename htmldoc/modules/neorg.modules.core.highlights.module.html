@@ -46,7 +46,7 @@
   <li><a href="../modules/neorg.modules.html">neorg.modules</a></li>
   <li><a href="../modules/neorg.modules.base.html">neorg.modules.base</a></li>
   <li><a href="../modules/neorg.modules.core.autocommands.module.html">neorg.modules.core.autocommands.module</a></li>
-  <li><a href="../modules/neorg.modules.core.highlights.module.html">neorg.modules.core.highlights.module</a></li>
+  <li><strong>neorg.modules.core.highlights.module</strong></li>
   <li><a href="../modules/neorg.modules.core.integrations.nvim-compe.module.html">neorg.modules.core.integrations.nvim-compe.module</a></li>
   <li><a href="../modules/neorg.modules.core.integrations.treesitter.module.html">neorg.modules.core.integrations.treesitter.module</a></li>
   <li><a href="../modules/neorg.modules.core.keybinds.module.html">neorg.modules.core.keybinds.module</a></li>
@@ -58,7 +58,7 @@
   <li><a href="../modules/neorg.modules.core.norg.esupports.module.html">neorg.modules.core.norg.esupports.module</a></li>
   <li><a href="../modules/neorg.modules.core.norg.qol.todo_items.module.html">neorg.modules.core.norg.qol.todo_items.module</a></li>
   <li><a href="../modules/neorg.modules.core.queries.native.module.html">neorg.modules.core.queries.native.module</a></li>
-  <li><strong>neorg.modules.core.ui.module</strong></li>
+  <li><a href="../modules/neorg.modules.core.ui.module.html">neorg.modules.core.ui.module</a></li>
   <li><a href="../modules/neorg.modules.core.ui.selection_popup.html">neorg.modules.core.ui.selection_popup</a></li>
   <li><a href="../modules/neorg.modules.core.ui.text_popup.html">neorg.modules.core.ui.text_popup</a></li>
 </ul>
@@ -67,27 +67,38 @@
 
 <div id="content">
 
-<h1>Module <code>neorg.modules.core.ui.module</code></h1>
-<p>Gets the current size of the window
- Returns a table in the form of { width, height } containing the width and height of the current window</p>
+<h1>Module <code>neorg.modules.core.highlights.module</code></h1>
+<p>Defines all the highlight groups for Neorg
+ Reads the highlights configuration table and applies all defined highlights</p>
 <p></p>
 
 
 <h2><a href="#Functions">Functions</a></h2>
 <table class="function_list">
 	<tr>
-	<td class="name" nowrap><a href="#apply_custom_options">apply_custom_options (modifiers, config)</a></td>
-	<td class="summary">Applies a set of custom options to modify regular Neovim window opts
- Returns a modified version of floating window options.</td>
+	<td class="name" nowrap><a href="#descend">descend (highlights, prefix)</a></td>
+	<td class="summary">Descends down a tree of highlights and applies them
+ Recursively descends down the highlight configuration and applies every highlight accordingly</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#delete_window">delete_window (buf)</a></td>
-	<td class="summary">Deletes a window that holds a specific buffer
- Attempts to force close the window that holds the specified buffer</td>
+	<td class="name" nowrap><a href="#add_highlights">add_highlights (highlights)</a></td>
+	<td class="summary">Adds a set of highlights from a table
+ Takes in a table of highlights and applies them to the current buffer</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#create_split">create_split (name, config)</a></td>
-	<td class="summary">Creates a new horizontal split at the bottom of the screen</td>
+	<td class="name" nowrap><a href="#add_dim">add_dim (dim)</a></td>
+	<td class="summary">Adds a set of dims from a table
+ Takes in a table of items to dim and applies the dimming to them</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#clear_highlights">clear_highlights ()</a></td>
+	<td class="summary">Clears all the highlights defined by Neorg
+ Assigns all Neorg* highlights to `clear`</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#descend">descend (highlights, prefix)</a></td>
+	<td class="summary">Descends down a tree of highlights and clears them
+ Recursively descends down the highlight configuration and clears every highlight accordingly</td>
 	</tr>
 </table>
 
@@ -99,22 +110,21 @@
 
     <dl class="function">
     <dt>
-    <a name = "apply_custom_options"></a>
-    <strong>apply_custom_options (modifiers, config)</strong>
+    <a name = "descend"></a>
+    <strong>descend (highlights, prefix)</strong>
     </dt>
     <dd>
-    Applies a set of custom options to modify regular Neovim window opts
- Returns a modified version of floating window options.
+    Descends down a tree of highlights and applies them
+ Recursively descends down the highlight configuration and applies every highlight accordingly
 
 
     <h3>Parameters:</h3>
     <ul>
-        <li><span class="parameter">modifiers</span>
-         table #This option set has two values - center_x and center_y.
- If they either of them is set to true then the window gets centered on that axis.
+        <li><span class="parameter">highlights</span>
+         table #The table of highlights to descend down
         </li>
-        <li><span class="parameter">config</span>
-         table #A table containing regular Neovim options for a floating window
+        <li><span class="parameter">prefix</span>
+         string #Should be only used by the function itself, acts as a "savestate" so the function can keep track of what path it has descended down
         </li>
     </ul>
 
@@ -124,18 +134,18 @@
 
 </dd>
     <dt>
-    <a name = "delete_window"></a>
-    <strong>delete_window (buf)</strong>
+    <a name = "add_highlights"></a>
+    <strong>add_highlights (highlights)</strong>
     </dt>
     <dd>
-    Deletes a window that holds a specific buffer
- Attempts to force close the window that holds the specified buffer
+    Adds a set of highlights from a table
+ Takes in a table of highlights and applies them to the current buffer
 
 
     <h3>Parameters:</h3>
     <ul>
-        <li><span class="parameter">buf</span>
-         number #The buffer ID whose parent window to close
+        <li><span class="parameter">highlights</span>
+         table #A table of highlights
         </li>
     </ul>
 
@@ -145,20 +155,57 @@
 
 </dd>
     <dt>
-    <a name = "create_split"></a>
-    <strong>create_split (name, config)</strong>
+    <a name = "add_dim"></a>
+    <strong>add_dim (dim)</strong>
     </dt>
     <dd>
-    Creates a new horizontal split at the bottom of the screen
+    Adds a set of dims from a table
+ Takes in a table of items to dim and applies the dimming to them
 
 
     <h3>Parameters:</h3>
     <ul>
-        <li><span class="parameter">name</span>
-         string the name of the buffer contained within the split (will have neorg:// prepended to it)
+        <li><span class="parameter">dim</span>
+         table #A table of items to dim
         </li>
-        <li><span class="parameter">config</span>
-         table a table of <option> = <value> keypairs signifying buffer-local options for the buffer contained within the split
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "clear_highlights"></a>
+    <strong>clear_highlights ()</strong>
+    </dt>
+    <dd>
+    Clears all the highlights defined by Neorg
+ Assigns all Neorg* highlights to `clear`
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "descend"></a>
+    <strong>descend (highlights, prefix)</strong>
+    </dt>
+    <dd>
+    Descends down a tree of highlights and clears them
+ Recursively descends down the highlight configuration and clears every highlight accordingly
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">highlights</span>
+         table #The table of highlights to descend down
+        </li>
+        <li><span class="parameter">prefix</span>
+         string #Should be only used by the function itself, acts as a "savestate" so the function can keep track of what path it has descended down
         </li>
     </ul>
 

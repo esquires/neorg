@@ -40,7 +40,7 @@ module.public = {
 module.on_event = function(event)
     if event.type == "core.neorgcmd.events.module.list" then
         vim.schedule(function()
-            vim.cmd('echom "--- PRINTING ALL LOADED MODULES ---"')
+            vim.cmd('echom "--- PRINTING ALL LOADED MODULES --- "')
         end)
 
         for _, mod in pairs(neorg.modules.loaded_modules) do

@@ -79,9 +79,9 @@ module.public = {
         end
     end,
 
-    ---Creates a new horizontal split at the bottom of the screen
-    ---@param  name string the name of the buffer contained within the split (will have neorg:// prepended to it)
-    ---@param  config table a table of <option> = <value> keypairs signifying buffer-local options for the buffer contained within the split
+    --- Creates a new horizontal split at the bottom of the screen
+    --- @param  name string the name of the buffer contained within the split (will have neorg:// prepended to it)
+    --- @param  config table a table of <option> = <value> keypairs signifying buffer-local options for the buffer contained within the split
     create_split = function(name, config)
         vim.validate({
             name = { name, "string" },

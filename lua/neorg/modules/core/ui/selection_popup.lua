@@ -17,9 +17,9 @@ return function(module)
 
                 vim.notify("Press <Esc> to quit the window")
 
-                ---Displays all possible keys the user can press
-                ---@param title string the title of the keybinds
-                ---@param flags table the list of flags to display
+                --- Displays all possible keys the user can press
+                --- @param title string the title of the keybinds
+                --- @param flags table the list of flags to display
                 local function display_values(title, flags)
                     -- Remove any already present extmarks
                     vim.api.nvim_buf_clear_namespace(buf, module.private.namespace, 0, -1)

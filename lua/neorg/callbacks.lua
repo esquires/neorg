@@ -12,8 +12,8 @@ neorg.callbacks = {
 --- Registers a new callback
 -- Triggers a new callback to execute whenever an event of the requested type is executed
 --- @param event_name string #The full path to the event we want to listen on
--- @Param  callback (function(event, content)) - the function to call whenever our event gets triggered
--- @Param  content_filter (function(event)) - a filtering function to test if a certain event meets our expectations
+--- @param callback function #The function to call whenever our event gets triggered
+--- @param content_filter function #A filtering function to test if a certain event meets our expectations
 function neorg.callbacks.on_event(event_name, callback, content_filter)
     -- If the table doesn't exist then create it
     neorg.callbacks.callback_list[event_name] = neorg.callbacks.callback_list[event_name] or {}

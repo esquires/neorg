@@ -242,7 +242,7 @@ With that in mind, you can do something like this (for example):
             ]]):format(query[2])
         end
 
-        -------------------------
+        --- ---- ---- ---- ---- ---- --
 
         for node in parent:iter_children() do
             if node:type() == query[2] then

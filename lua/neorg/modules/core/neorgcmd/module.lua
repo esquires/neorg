@@ -231,7 +231,7 @@ module.public = {
 
     --- The callback function whenever the :Neorg command is executed
     -- Handles the calling of the appropriate function based on the command the user entered
-    -- @Param  ... (varargs) - the contents of <f-args> provided by nvim itself
+    --- @vararg any #The contents of <f-args> provided by nvim itself
     function_callback = function(...)
         -- Unpack the varargs into a table
         local args = { ... }

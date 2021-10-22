@@ -31,6 +31,10 @@
   <li><a href="../index.html">Index</a></li>
 </ul>
 
+<h2>Contents</h2>
+<ul>
+<li><a href="#Functions">Functions</a></li>
+</ul>
 
 
 <h2>Modules</h2>
@@ -40,7 +44,7 @@
   <li><a href="../modules/neorg.events.html">neorg.events</a></li>
   <li><a href="../modules/neorg.external.helpers.html">neorg.external.helpers</a></li>
   <li><a href="../modules/neorg.modules.html">neorg.modules</a></li>
-  <li><a href="../modules/neorg.modules.base.html">neorg.modules.base</a></li>
+  <li><strong>neorg.modules.base</strong></li>
   <li><a href="../modules/neorg.modules.core.autocommands.module.html">neorg.modules.core.autocommands.module</a></li>
   <li><a href="../modules/neorg.modules.core.highlights.module.html">neorg.modules.core.highlights.module</a></li>
   <li><a href="../modules/neorg.modules.core.integrations.nvim-compe.module.html">neorg.modules.core.integrations.nvim-compe.module</a></li>
@@ -52,7 +56,7 @@
   <li><a href="../modules/neorg.modules.core.norg.concealer.module.html">neorg.modules.core.norg.concealer.module</a></li>
   <li><a href="../modules/neorg.modules.core.norg.dirman.module.html">neorg.modules.core.norg.dirman.module</a></li>
   <li><a href="../modules/neorg.modules.core.norg.esupports.module.html">neorg.modules.core.norg.esupports.module</a></li>
-  <li><strong>neorg.modules.core.norg.qol.todo_items.module</strong></li>
+  <li><a href="../modules/neorg.modules.core.norg.qol.todo_items.module.html">neorg.modules.core.norg.qol.todo_items.module</a></li>
   <li><a href="../modules/neorg.modules.core.queries.native.module.html">neorg.modules.core.queries.native.module</a></li>
   <li><a href="../modules/neorg.modules.core.ui.module.html">neorg.modules.core.ui.module</a></li>
   <li><a href="../modules/neorg.modules.core.ui.selection_popup.html">neorg.modules.core.ui.selection_popup</a></li>
@@ -63,16 +67,50 @@
 
 <div id="content">
 
-<h1>Module <code>neorg.modules.core.norg.qol.todo_items.module</code></h1>
-<p>Updates the parent todo item for the current todo item if it exists</p>
+<h1>Module <code>neorg.modules.base</code></h1>
+<p>Creates a new module
+ Returns a module that derives from neorg.modules.module_base, exposing all the necessary function and variables</p>
 <p></p>
 
 
+<h2><a href="#Functions">Functions</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#neorg.modules.create_meta">neorg.modules.create_meta (name)</a></td>
+	<td class="summary">Creates a metamodule
+ Constructs a metamodule from a list of submodules.</td>
+	</tr>
+</table>
 
 <br/>
 <br/>
 
 
+    <h2 class="section-header "><a name="Functions"></a>Functions</h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "neorg.modules.create_meta"></a>
+    <strong>neorg.modules.create_meta (name)</strong>
+    </dt>
+    <dd>
+    Creates a metamodule
+ Constructs a metamodule from a list of submodules.  Metamodules are modules that can autoload batches of modules at once.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">name</span>
+         string #The name of the new metamodule. Make sure this is unique. The recommended naming convention is category.module_name or category.subcategory.module_name
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+</dl>
 
 
 </div> <!-- id="content" -->

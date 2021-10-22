@@ -113,7 +113,7 @@ end
 --- Creates a metamodule
 -- Constructs a metamodule from a list of submodules. Metamodules are modules that can autoload batches of modules at once.
 --- @param name string #The name of the new metamodule. Make sure this is unique. The recommended naming convention is category.module_name or category.subcategory.module_name
--- @Param  ... (varargs) - a list of module names to load.
+--- @vararg any #A list of module names to load.
 function neorg.modules.create_meta(name, ...)
     local module = neorg.modules.create(name)
 

@@ -532,7 +532,7 @@ module.public = {
     end,
 
     --- Invokes a callback for every element of the current tree
-    -- @Param  callback (function(node)) - the callback to invoke
+    --- @param callback function #The callback to invoke
     -- TODO: docs
     tree_map = function(callback, ts_tree)
         local tree = ts_tree or vim.treesitter.get_parser(0, "norg"):parse()[1]

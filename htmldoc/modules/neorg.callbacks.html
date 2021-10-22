@@ -31,12 +31,16 @@
   <li><a href="../index.html">Index</a></li>
 </ul>
 
+<h2>Contents</h2>
+<ul>
+<li><a href="#Functions">Functions</a></li>
+</ul>
 
 
 <h2>Modules</h2>
 <ul class="nowrap">
   <li><a href="../modules/neorg.html">neorg</a></li>
-  <li><a href="../modules/neorg.callbacks.html">neorg.callbacks</a></li>
+  <li><strong>neorg.callbacks</strong></li>
   <li><a href="../modules/neorg.events.html">neorg.events</a></li>
   <li><a href="../modules/neorg.external.helpers.html">neorg.external.helpers</a></li>
   <li><a href="../modules/neorg.modules.html">neorg.modules</a></li>
@@ -52,7 +56,7 @@
   <li><a href="../modules/neorg.modules.core.norg.concealer.module.html">neorg.modules.core.norg.concealer.module</a></li>
   <li><a href="../modules/neorg.modules.core.norg.dirman.module.html">neorg.modules.core.norg.dirman.module</a></li>
   <li><a href="../modules/neorg.modules.core.norg.esupports.module.html">neorg.modules.core.norg.esupports.module</a></li>
-  <li><strong>neorg.modules.core.norg.qol.todo_items.module</strong></li>
+  <li><a href="../modules/neorg.modules.core.norg.qol.todo_items.module.html">neorg.modules.core.norg.qol.todo_items.module</a></li>
   <li><a href="../modules/neorg.modules.core.queries.native.module.html">neorg.modules.core.queries.native.module</a></li>
   <li><a href="../modules/neorg.modules.core.ui.module.html">neorg.modules.core.ui.module</a></li>
   <li><a href="../modules/neorg.modules.core.ui.selection_popup.html">neorg.modules.core.ui.selection_popup</a></li>
@@ -63,16 +67,50 @@
 
 <div id="content">
 
-<h1>Module <code>neorg.modules.core.norg.qol.todo_items.module</code></h1>
-<p>Updates the parent todo item for the current todo item if it exists</p>
+<h1>Module <code>neorg.callbacks</code></h1>
+<p>Registers a new callback
+ Triggers a new callback to execute whenever an event of the requested type is executed</p>
 <p></p>
 
 
+<h2><a href="#Functions">Functions</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#neorg.callbacks.handle_callbacks">neorg.callbacks.handle_callbacks (event)</a></td>
+	<td class="summary">Handles the triggering of all registered callbacks
+ Used internally by Neorg to call all callbacks with an event</td>
+	</tr>
+</table>
 
 <br/>
 <br/>
 
 
+    <h2 class="section-header "><a name="Functions"></a>Functions</h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "neorg.callbacks.handle_callbacks"></a>
+    <strong>neorg.callbacks.handle_callbacks (event)</strong>
+    </dt>
+    <dd>
+    Handles the triggering of all registered callbacks
+ Used internally by Neorg to call all callbacks with an event
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">event</span>
+         table #An event as returned by neorg.events.create()
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+</dl>
 
 
 </div> <!-- id="content" -->
