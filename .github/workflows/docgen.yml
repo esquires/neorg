@@ -1,6 +1,11 @@
 name: Generate documentation
 
-on: [push, pull_request_target, workflow_dispatch]
+on:
+  push:
+    paths:
+      - "lua/**.lua"
+  pull_request_target:
+  workflow_dispatch:
 
 jobs:
   generate-documentation:
@@ -13,6 +18,7 @@ jobs:
 
       - name: Generate documentation
         run: |
+          sudo apt install lua5.1
           cd ./neorg
           make gen-docs
 
