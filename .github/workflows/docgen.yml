@@ -6,11 +6,6 @@ on:
       - "lua/**.lua"
       - ".github/**.yml" # For debugging
     branches: [ "main", "add-ldoc" ] # `add-ldoc` is also just for debugging, will be removed
-  pull_request_target:
-    paths:
-      - "lua/**.lua"
-      - ".github/**.yml"
-    branches: [ "main", "add-ldoc" ]
 
 jobs:
   generate-documentation:
@@ -48,3 +43,4 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           branch: gh-pages
           directory: ./neorg
+          force: true
