@@ -1,0 +1,34 @@
+name: Generate documentation
+
+on: [push, pull_request_target, workflow_dispatch]
+
+jobs:
+  generate-documentation:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v2
+        with:
+          path: neorg
+
+      - name: Generate documentation
+        run: |
+          cd ./neorg
+          make gen-docs
+
+      - name: Commit changes
+        run: |
+          cd ./neorg
+          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          if [[ ! -z $(git status -s) ]]; then
+            git add database.json
+            git commit -m "chore: update plugins database"
+          fi
+
+      - name: Push regenerated documentation
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ github.ref }}
+          directory: ./neorg
