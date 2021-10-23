@@ -236,9 +236,9 @@ module.public = {
 
     --- Creates a new indent
     -- Sets a new set of rules that when fulfilled will indent the text properly
-    --- @tparam match string #A regex that should match the line above the newly placed line
+    --- @tparam match string A regex that should match the line above the newly placed line
     -- @Param  indent (function(matches) -> number) - a function that should return the level of indentation in spaces for that line
-    --- @tparam current boolean #If true checks the current line rather than the previous non-blank line
+    --- @tparam current boolean If true checks the current line rather than the previous non-blank line
     create_indent = function(match, indent, current)
         local line_number = current and vim.api.nvim_win_get_cursor(0)[1]
             or vim.fn.prevnonblank(vim.api.nvim_win_get_cursor(0)[1] - 1)

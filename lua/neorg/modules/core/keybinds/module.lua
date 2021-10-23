@@ -62,8 +62,8 @@ module.public = {
 
     --- Registers a new keybind
     -- Adds a new keybind to the database of known keybinds
-    --- @tparam module_name string #The name of the module that owns the keybind. Make sure it's an absolute path.
-    --- @tparam name string #The name of the keybind. The module_name will be prepended to this string to form a unique name.
+    --- @tparam module_name string The name of the module that owns the keybind. Make sure it's an absolute path.
+    --- @tparam name string The name of the keybind. The module_name will be prepended to this string to form a unique name.
     register_keybind = function(module_name, name)
         -- Create the full keybind name
         local keybind_name = module_name .. "." .. name
@@ -82,8 +82,8 @@ module.public = {
 
     --- Registers a batch of keybinds
     -- Like register_keybind(), except registers a batch of them
-    --- @tparam module_name string #The name of the module that owns the keybind. Make sure it's an absolute path.
-    --- @tparam names list of strings #A list of strings detailing names of the keybinds. The module_name will be prepended to each one to form a unique name.
+    --- @tparam module_name string The name of the module that owns the keybind. Make sure it's an absolute path.
+    --- @tparam names list of strings A list of strings detailing names of the keybinds. The module_name will be prepended to each one to form a unique name.
     register_keybinds = function(module_name, names)
         -- Loop through each name from the names argument
         for _, name in ipairs(names) do
@@ -119,10 +119,10 @@ module.public = {
 
             --- Maps a Neovim keybind.
             -- Allows Neorg to manage and track mapped keys.
-            --- @tparam mode string #Same as the mode parameter for :h nvim_buf_set_keymap
-            --- @tparam key string #Same as the lhs parameter for :h nvim_buf_set_keymap
-            --- @tparam command string #Same as the rhs parameter for :h nvim_buf_set_keymap
-            --- @tparam opts table #Same as the opts parameter for :h nvim_buf_set_keymap
+            --- @tparam mode string Same as the mode parameter for :h nvim_buf_set_keymap
+            --- @tparam key string Same as the lhs parameter for :h nvim_buf_set_keymap
+            --- @tparam command string Same as the rhs parameter for :h nvim_buf_set_keymap
+            --- @tparam opts table Same as the opts parameter for :h nvim_buf_set_keymap
             map = function(mode, key, command, opts)
                 vim.api.nvim_set_keymap(mode, key, command, opts or {})
 
@@ -132,9 +132,9 @@ module.public = {
 
             --- Maps a bunch of keys for a certain mode
             -- An advanced wrapper around the map() function, maps several keys if the current neorg mode is the desired one
-            --- @tparam mode string #The neorg mode to bind the keys on
-            --- @tparam keys table { <neovim_mode> = { { "<key>", "<name-of-keybind>" } } } #A table of keybinds
-            --- @tparam opts table #The same parameters that should be passed into vim.api.nvim_set_keymap()'s opts parameter
+            --- @tparam mode string The neorg mode to bind the keys on
+            --- @tparam keys table { <neovim_mode> = { { "<key>", "<name-of-keybind>" } } } A table of keybinds
+            --- @tparam opts table The same parameters that should be passed into vim.api.nvim_set_keymap()'s opts parameter
             map_to_mode = function(mode, keys, opts)
                 -- If the keys table is empty then don't bother doing any parsing
                 if vim.tbl_isempty(keys) then
@@ -156,9 +156,9 @@ module.public = {
 
             --- Maps a bunch of keys for a certain mode
             -- An advanced wrapper around the map() function, maps several keys if the current neorg mode is the desired one
-            --- @tparam mode string #The neorg mode to bind the keys on
-            --- @tparam keys table { <neovim_mode> = { { "<key>", "<name-of-keybind>" } } } #A table of keybinds
-            --- @tparam opts table #The same parameters that should be passed into vim.api.nvim_set_keymap()'s opts parameter
+            --- @tparam mode string The neorg mode to bind the keys on
+            --- @tparam keys table { <neovim_mode> = { { "<key>", "<name-of-keybind>" } } } A table of keybinds
+            --- @tparam opts table The same parameters that should be passed into vim.api.nvim_set_keymap()'s opts parameter
             map_event_to_mode = function(mode, keys, opts)
                 -- If the keys table is empty then don't bother doing any parsing
                 if vim.tbl_isempty(keys) then

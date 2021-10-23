@@ -12,7 +12,7 @@ local configuration = require("neorg.config")
 
 --- Sets up neorg
 --- This function takes in a user configuration, parses it, initializes everything and launches neorg if inside a .norg or .org file
---- @tparam config table #A table that reflects the structure of configuration.user_configuration
+--- @tparam config table A table that reflects the structure of configuration.user_configuration
 function neorg.setup(config)
     configuration.user_configuration = config or {}
 
@@ -31,7 +31,7 @@ end
 
 --- Neorg startup function
 --- This function gets called upon entering a .norg file and loads all of the user-defined modules.
---- @tparam manual boolean #If true then the environment was kickstarted manually by the user
+--- @tparam manual boolean If true then the environment was kickstarted manually by the user
 function neorg.org_file_entered(manual)
     -- Extract the module list from the user configuration
     local module_list = configuration.user_configuration and configuration.user_configuration.load or {}

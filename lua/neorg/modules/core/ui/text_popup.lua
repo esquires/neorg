@@ -7,11 +7,11 @@ return function(module)
         public = {
             --- Creates a new interactable prompt
             -- Opens a floating window at the specified position and asks for user input
-            --- @tparam name string #The name of the floating window
-            --- @tparam input_text string #The input text to prompt the user for input
-            --- @tparam callback function #A function that gets invoked whenever the user provides some text.
-            --- @tparam modifiers table #Special table to modify certain attributes of the floating window (like centering on the x or y axis)
-            --- @tparam config table #A config like you would pass into nvim_open_win()
+            --- @tparam name string The name of the floating window
+            --- @tparam input_text string The input text to prompt the user for input
+            --- @tparam callback function A function that gets invoked whenever the user provides some text.
+            --- @tparam modifiers table Special table to modify certain attributes of the floating window (like centering on the x or y axis)
+            --- @tparam config table A config like you would pass into nvim_open_win()
             create_prompt = function(name, input_text, callback, modifiers, config)
                 -- If the window already exists then don't create another one
                 if module.private.windows[name] then
