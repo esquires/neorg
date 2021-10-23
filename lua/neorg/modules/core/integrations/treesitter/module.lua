@@ -459,6 +459,7 @@ module.public = {
     --- Returns metadata for a tag
     -- Given a node this function will break down the AST elements and return the corresponding text for certain nodes
     --- @tparam userdata tag_node/treesitter node A node of type tag/carryover_tag
+    --- @tparam boolean check_parent Determines whether or not parent nodes should also be parsed
     get_tag_info = function(tag_node, check_parent)
         if not tag_node or (tag_node:type() ~= "tag" and tag_node:type() ~= "carryover_tag") then
             return nil
@@ -482,6 +483,7 @@ module.public = {
                 else
                     log.warn("Two carryover tags with the same name detected, the top level tag will take precedence")
                 end
+
                 parent = parent:parent()
             end
         end

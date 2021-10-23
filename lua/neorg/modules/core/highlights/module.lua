@@ -1,5 +1,6 @@
---[[
+--[[--
 	Neorg module for managing highlight groups.
+	@module core.highlights
 --]]
 
 require("neorg.modules.base")
@@ -64,7 +65,7 @@ module.public = {
         --- Descends down a tree of highlights and applies them
         -- Recursively descends down the highlight configuration and applies every highlight accordingly
         --- @tparam table highlights The table of highlights to descend down
-        -- @Param  callback (function(hl_name, highlight, prefix) -> bool) - a callback function to be invoked for every highlight. If it returns true then we should recurse down the table tree further
+        --- @tparam function callback A callback function to be invoked for every highlight. If it returns true then we should recurse down the table tree further
         --- @tparam string prefix Should be only used by the function itself, acts as a "savestate" so the function can keep track of what path it has descended down
         descend = function(highlights, callback, prefix)
             -- Loop through every highlight defined in the provided table
