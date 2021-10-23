@@ -20,7 +20,8 @@ jobs:
       - name: Generate documentation
         run: |
           sudo apt update -q
-          sudo apt install -y -q lua5.1
+          sudo apt install -y -q lua5.1 luarocks
+          sudo luarocks install penlight
           cd ./neorg
           make gen-docs
 
