@@ -4,7 +4,7 @@ on:
   push:
     paths:
       - "lua/**.lua"
-  workflow_dispatch:
+      - ".github/**.yml" # For debugging
   pull_request_target:
 
 jobs:

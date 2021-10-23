@@ -3,7 +3,7 @@ name: Formatting
 on: [push, pull_request_target]
 
 jobs:
-  postprocessing:
+  format-with-stylua:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
