@@ -31,12 +31,16 @@
   <li><a href="../index.html">Index</a></li>
 </ul>
 
+<h2>Contents</h2>
+<ul>
+<li><a href="#Functions">Functions</a></li>
+</ul>
 
 
 <h2>Modules</h2>
 <ul class="nowrap">
   <li><a href="../modules/neorg.html">neorg</a></li>
-  <li><a href="../modules/callbacks.html">callbacks</a></li>
+  <li><strong>callbacks</strong></li>
   <li><a href="../modules/events.html">events</a></li>
   <li><a href="../modules/neorg.external.helpers.html">neorg.external.helpers</a></li>
   <li><a href="../modules/neorg.modules.html">neorg.modules</a></li>
@@ -53,7 +57,7 @@
   <li><a href="../modules/neorg.modules.core.norg.dirman.module.html">neorg.modules.core.norg.dirman.module</a></li>
   <li><a href="../modules/neorg.modules.core.norg.esupports.module.html">neorg.modules.core.norg.esupports.module</a></li>
   <li><a href="../modules/neorg.modules.core.norg.qol.todo_items.module.html">neorg.modules.core.norg.qol.todo_items.module</a></li>
-  <li><strong>neorg.modules.core.queries.native.module</strong></li>
+  <li><a href="../modules/neorg.modules.core.queries.native.module.html">neorg.modules.core.queries.native.module</a></li>
   <li><a href="../modules/neorg.modules.core.ui.module.html">neorg.modules.core.ui.module</a></li>
   <li><a href="../modules/neorg.modules.core.ui.selection_popup.html">neorg.modules.core.ui.selection_popup</a></li>
   <li><a href="../modules/neorg.modules.core.ui.text_popup.html">neorg.modules.core.ui.text_popup</a></li>
@@ -63,16 +67,86 @@
 
 <div id="content">
 
-<h1>Module <code>neorg.modules.core.queries.native.module</code></h1>
-<p>Use a `tree` to query all required nodes from a `bufnr`.</p>
-<p> Returns a list of nodes of type { node, bufnr }</p>
+<h1>Module <code>callbacks</code></h1>
+<p>Neorg User Callbacks File
+	User callbacks are ways for the user to directly interact with Neorg and respond on certain events.</p>
+<p></p>
 
 
+<h2><a href="#Functions">Functions</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#neorg.callbacks.on_event">neorg.callbacks.on_event (event_name, callback, content_filter)</a></td>
+	<td class="summary">Registers a new callback
+ Triggers a new callback to execute whenever an event of the requested type is executed</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#neorg.callbacks.handle_callbacks">neorg.callbacks.handle_callbacks (event)</a></td>
+	<td class="summary">Handles the triggering of all registered callbacks
+ Used internally by Neorg to call all callbacks with an event</td>
+	</tr>
+</table>
 
 <br/>
 <br/>
 
 
+    <h2 class="section-header "><a name="Functions"></a>Functions</h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "neorg.callbacks.on_event"></a>
+    <strong>neorg.callbacks.on_event (event_name, callback, content_filter)</strong>
+    </dt>
+    <dd>
+    Registers a new callback
+ Triggers a new callback to execute whenever an event of the requested type is executed
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">event_name</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         The full path to the event we want to listen on
+        </li>
+        <li><span class="parameter">callback</span>
+            <span class="types"><span class="type">function</span></span>
+         The function to call whenever our event gets triggered
+        </li>
+        <li><span class="parameter">content_filter</span>
+            <span class="types"><span class="type">function</span></span>
+         A filtering function to test if a certain event meets our expectations
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "neorg.callbacks.handle_callbacks"></a>
+    <strong>neorg.callbacks.handle_callbacks (event)</strong>
+    </dt>
+    <dd>
+    Handles the triggering of all registered callbacks
+ Used internally by Neorg to call all callbacks with an event
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">event</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+         An event as returned by neorg.events.create()
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+</dl>
 
 
 </div> <!-- id="content" -->

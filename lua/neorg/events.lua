@@ -1,7 +1,8 @@
---[[
--- NEORG EVENT FILE
--- This file is responsible for dealing with event handling and broadcasting.
--- All modules that subscribe to an event will receive it once it is triggered.
+--[[--
+    Neorg Event File
+    This file is responsible for dealing with event handling and broadcasting.
+    All modules that subscribe to an event will receive it once it is triggered.
+    @module events
 --]]
 
 -- Include the global instance of the logger
@@ -160,7 +161,6 @@ end
 
 --- Sends an event to an individual module
 -- Instead of broadcasting to all loaded modules, send_event() only sends to one module
---- @tparam table module A reference to the module invoking the function. Used to verify the authenticity of the function call
 --- @tparam string recipient The name of a loaded module that will be the recipient of the event
 --- @tparam table event An event, usually created by neorg.events.create()
 function neorg.events.send_event(recipient, event)
