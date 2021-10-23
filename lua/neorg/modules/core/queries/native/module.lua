@@ -27,8 +27,8 @@ end
 module.public = {
 
     --- Use a `tree` to query all required nodes from a `bufnr`. Returns a list of nodes of type { node, bufnr }
-    --- @param tree table
-    --- @param bufnr number
+    --- @tparam tree table
+    --- @tparam bufnr number
     --- @return table
     query_nodes_from_buf = function(tree, bufnr)
         local root_node = module.private.get_buf_root_node(bufnr)
@@ -41,7 +41,7 @@ module.public = {
     end,
 
     --- Extract content from `nodes` of type { node, bufnr }
-    --- @param nodes table
+    --- @tparam nodes table
     --- @return table
     extract_nodes = function(nodes)
         local res = {}
@@ -57,9 +57,9 @@ module.public = {
     --- Find the parent `node` that match `node_type`. Returns a node of type { node, bufnr }.
     --- If `opts.multiple`, returns a table of parent nodes that mached `node_type`
     --- `node` must be of type { node, bufnr }
-    --- @param node table
-    --- @param node_type string
-    --- @param opts table
+    --- @tparam node table
+    --- @tparam node_type string
+    --- @tparam opts table
     --- - opts.multiple (bool):  if true, will return all recursive parent nodes that match `node_type`
     --- @return table
     find_parent_node = function(node, node_type, opts)
@@ -79,9 +79,9 @@ module.public = {
     end,
 
     --- Finds the first sibling `node` (type { node, bufnr } ) that match `node_type`. Returns a node of type { node, bufnr }
-    --- @param node table
-    --- @param node_type string
-    --- @param opts table
+    --- @tparam node table
+    --- @tparam node_type string
+    --- @tparam opts table
     --- - opts.where (table):     if provided will try the where stateement supplied
     --- @return table
     find_sibling_node = function(node, node_type, opts)
@@ -108,9 +108,9 @@ module.public = {
 
     --- Recursively generates results from a `parent` node, following a `tree` table
     --- @see First implementation in: https://github.com/danymat/neogen/blob/main/lua/neogen/utilities/nodes.lua
-    --- @param parent userdata
-    --- @param tree table
-    --- @param results table|nil
+    --- @tparam parent userdata
+    --- @tparam tree table
+    --- @tparam results table|nil
     --- @return table
     query_from_tree = function(parent, tree, bufnr, results)
         local res = results or {}
@@ -156,7 +156,7 @@ module.public = {
 
 module.private = {
     --- Get the root node from a `bufnr`
-    --- @param bufnr number
+    --- @tparam bufnr number
     --- @return userdata
     get_buf_root_node = function(bufnr)
         local parser = vim.treesitter.get_parser(bufnr, "norg")
@@ -165,8 +165,8 @@ module.private = {
     end,
 
     --- Returns a list of child nodes (from `parent`) that matches a `tree`
-    --- @param parent userdata
-    --- @param tree table
+    --- @tparam parent userdata
+    --- @tparam tree table
     --- @return table
     matching_nodes = function(parent, tree, bufnr)
         local res = {}
@@ -197,9 +197,9 @@ module.private = {
 
     --- Get a list of child nodes (from `parent`) that match the provided `query`
     --- @see First implementation in: https://github.com/danymat/neogen/blob/main/lua/neogen/utilities/nodes.lua
-    --- @param parent userdata
-    --- @param query table
-    --- @param opts table
+    --- @tparam parent userdata
+    --- @tparam query table
+    --- @tparam opts table
     --- - opts.recursive (bool):      if true will recursively find the matching query
     --- @return table
     matching_query = function(parent, query, opts)
@@ -269,9 +269,9 @@ With that in mind, you can do something like this (for example):
     end,
 
     --- Checks if `parent` node matches a `where` query and returns a predicate accordingly
-    --- @param parent userdata
-    --- @param where table
-    --- @param opts table
+    --- @tparam parent userdata
+    --- @tparam where table
+    --- @tparam opts table
     --- - opts.bufnr (number):    used in where[1] == "child_content" (in order to get the node's content)
     --- @return boolean
     predicate_where = function(parent, where, opts)

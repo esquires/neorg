@@ -315,8 +315,8 @@ module.load = function()
     local get_enabled_icons
 
     --- Returns all the enabled icons from a table
-    --- @param tbl table #The table to parse
-    --- @param rec_name string #Should not be set manually. Is used for Neorg to have information about all other previous recursions
+    --- @tparam tbl table #The table to parse
+    --- @tparam rec_name string #Should not be set manually. Is used for Neorg to have information about all other previous recursions
     get_enabled_icons = function(tbl, rec_name)
         rec_name = rec_name or ""
 
@@ -486,14 +486,14 @@ module.public = {
 
     --- Sets an extmark in the buffer
     -- Mostly a wrapper around vim.api.nvim_buf_set_extmark in order to make it more safe
-    --- @param text string|table #The virtual text to overlay (usually the icon)
-    --- @param highlight string #The name of a highlight to use for the icon
-    --- @param line_number number #The line number to apply the extmark in
-    --- @param end_line number #The last line number to apply the extmark to (useful if you want an extmark to exist for more than one line)
-    --- @param start_column number #The start column of the conceal
-    --- @param end_column number #The end column of the conceal
-    --- @param whole_line boolean #If true will highlight the whole line (like in diffs)
-    --- @param mode string: "replace"/"combine"/"blend" #The highlight mode for the extmark
+    --- @tparam text string|table #The virtual text to overlay (usually the icon)
+    --- @tparam highlight string #The name of a highlight to use for the icon
+    --- @tparam line_number number #The line number to apply the extmark in
+    --- @tparam end_line number #The last line number to apply the extmark to (useful if you want an extmark to exist for more than one line)
+    --- @tparam start_column number #The start column of the conceal
+    --- @tparam end_column number #The end column of the conceal
+    --- @tparam whole_line boolean #If true will highlight the whole line (like in diffs)
+    --- @tparam mode string: "replace"/"combine"/"blend" #The highlight mode for the extmark
     _set_extmark = function(text, highlight, line_number, end_line, start_column, end_column, whole_line, mode)
         -- If the text type is a string then convert it into something that Neovim's extmark API can understand
         if type(text) == "string" then

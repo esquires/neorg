@@ -41,7 +41,7 @@ module.config.public = {
 
 module.public = {
     --- Updates the parent todo item for the current todo item if it exists
-    --- @param recursion_level number the index of the parent to change. The higher the number the more the code will traverse up the syntax tree.
+    --- @tparam recursion_level number the index of the parent to change. The higher the number the more the code will traverse up the syntax tree.
     update_parent = function(recursion_level)
         -- Force a reparse (this is required because otherwise some cached nodes will be incorrect)
         vim.treesitter.get_parser(0, "norg"):parse()
@@ -128,7 +128,7 @@ module.public = {
     end,
 
     --- Returns the type of a todo item (either "done", "pending" or "undone")
-    --- @param todo_node userdata the todo node to extract the data from
+    --- @tparam todo_node userdata the todo node to extract the data from
     --- @return string one of "done", "pending" or "undone" or an empty string if an error occurred
     get_todo_item_type = function(todo_node)
         if not todo_node then
@@ -141,9 +141,9 @@ module.public = {
     end,
 
     --- Converts the current node and all its children to a certain type
-    --- @param node userdata the node to modify
-    --- @param todo_item_type string one of "done", "pending" or "undone"
-    --- @param char string the character to place within the square brackets of the todo item (one of "x", "*" or " ")
+    --- @tparam node userdata the node to modify
+    --- @tparam todo_item_type string one of "done", "pending" or "undone"
+    --- @tparam char string the character to place within the square brackets of the todo item (one of "x", "*" or " ")
     make_all = function(node, todo_item_type, char)
         if not node then
             return

@@ -29,7 +29,7 @@ end
 
 module.public = {
     --- Creates a new nvim-compe source
-    --- @param user_data table #A table of user data to supply to the source upon creation
+    --- @tparam user_data table #A table of user data to supply to the source upon creation
     create_source = function(user_data)
         user_data = user_data or {}
 
@@ -79,7 +79,7 @@ module.public = {
 
     --- Used to determine whether or not to provide completions
     -- Looks at the cursor position and tries to determine whether we should provide any completions
-    --- @param context table #The context provided by nvim-compe
+    --- @tparam context table #The context provided by nvim-compe
     determine = function(context)
         -- Abstract away the context to a completion engine agnostic format
         local abstracted_context = module.public.create_abstracted_context(context)
@@ -127,7 +127,7 @@ module.public = {
 
     --- Completes the items from the completion cache
     -- Once the completion candidates have been collected from the determine() function it's time to display them
-    --- @param context table #A context as provided by nvim-compe
+    --- @tparam context table #A context as provided by nvim-compe
     complete = function(context)
         -- If the completion cache is empty for some reason then don't do anything
         if vim.tbl_isempty(module.private.completion_cache.items) then
@@ -149,7 +149,7 @@ module.public = {
     end,
 
     --- Invoked whenever a completion item is confirmed
-    --- @param context table #A context as provided by nvim-compe
+    --- @tparam context table #A context as provided by nvim-compe
     confirm = function(context)
         -- If the defined completion has a post function then invoke it
         if module.private.completion_cache.options.post then
@@ -162,7 +162,7 @@ module.public = {
 
     --- Creates a completion engine agnostic representation of a context
     -- Returns a new context based off of nvim-compe's "proprietary" context and converts it into a universal context
-    --- @param context table #A context as provided by nvim-compe
+    --- @tparam context table #A context as provided by nvim-compe
     create_abstracted_context = function(context)
         return {
             start_offset = context.start_offset,

@@ -105,7 +105,7 @@ module.public = {
 
     --- Retrieve a workspace
     -- If present retrieve a workspace's path by its name, else returns nil
-    --- @param name string #The name of the workspace
+    --- @tparam name string #The name of the workspace
     get_workspace = function(name)
         return module.config.public.workspaces[name]
     end,
@@ -119,7 +119,7 @@ module.public = {
     --- Sets the current workspace
     -- Sets the workspace to the one specified (if it exists) and broadcasts the workspace_changed event
     -- Returns true if the workspace is set correctly, else returns false
-    --- @param ws_name name #The name of a valid namespace we want to switch to
+    --- @tparam ws_name name #The name of a valid namespace we want to switch to
     set_workspace = function(ws_name)
         -- Grab the workspace location
         local workspace = module.config.public.workspaces[ws_name]
@@ -156,8 +156,8 @@ module.public = {
     --- Adds a new workspace
     -- Dynamically defines a new workspace if the name isn't already occupied and broadcasts the workspace_added event
     -- Returns true if the workspace is added successfully, else returns false
-    --- @param workspace_name string #The unique name of the new workspace
-    --- @param workspace_path string #A full path to the workspace root
+    --- @tparam workspace_name string #The unique name of the new workspace
+    --- @tparam workspace_path string #A full path to the workspace root
     add_workspace = function(workspace_name, workspace_path)
         -- If the module already exists then bail
         if module.config.public.workspaces[workspace_name] then
@@ -263,7 +263,7 @@ module.public = {
 
     --- Creates a new Neorg file
     -- Takes in a path (can include directories) and creates a .norg file from that path
-    --- @param path string #A path to place the .norg file in
+    --- @tparam path string #A path to place the .norg file in
     create_file = function(path)
         -- Grab the current workspace's full path
         local fullpath = module.public.get_current_workspace()[2]
@@ -293,8 +293,8 @@ module.public = {
 
     --- Open a Neorg file
     -- Takes in a workspace name and a path for a file and opens it
-    --- @param workspace_name string #The name of the workspace to use
-    --- @param path string #A path to open the file (e.g directory/filename.norg)
+    --- @tparam workspace_name string #The name of the workspace to use
+    --- @tparam path string #A path to open the file (e.g directory/filename.norg)
     open_file = function(workspace_name, path)
         local workspace = module.public.get_workspace(workspace_name)
         if workspace == nil then
@@ -362,7 +362,7 @@ module.public = {
     end,
 
     --- Checks for file existence by supplying a full path in `filepath`
-    --- @param filepath string
+    --- @tparam filepath string
     file_exists = function(filepath)
         local f = io.open(filepath, "r")
 
@@ -375,7 +375,7 @@ module.public = {
     end,
 
     --- Get the bufnr for a `filepath` (full path)
-    --- @param filepath string
+    --- @tparam filepath string
     get_file_bufnr = function(filepath)
         if module.public.file_exists(filepath) then
             local uri = vim.uri_from_fname(filepath)
@@ -384,7 +384,7 @@ module.public = {
     end,
 
     --- Returns a list of all files relative path from a `workspace_name`
-    --- @param workspace_name string
+    --- @tparam workspace_name string
     --- @return table
     get_norg_files = function(workspace_name)
         local res = {}
