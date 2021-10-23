@@ -1,7 +1,8 @@
---[[
--- NEORG MODULE MANAGER
--- This file is responsible for loading, calling and managing modules
--- Modules are internal mini-programs that execute on certain events, they build the foundation of neorg itself.
+--[[--
+    Neorg's module manager.
+    This file is responsible for loading, calling and managing modules.
+    Modules are internal mini-programs that execute on certain events, they build the foundation of neorg itself.
+    @module neorg.modules
 --]]
 
 -- Include the global logger instance
@@ -149,6 +150,7 @@ end
 -- This is the recommended way of loading modules - load_module_from_table() should only really be used by neorg itself.
 --- @tparam string module_name A path to a module on disk. A path seperator in neorg is '.', not '/'
 --- @tparam table config A configuration that reflects the structure of neorg.configuration.user_configuration.load["module.name"].config
+--- @see neorg.configuration.user_configuration
 function neorg.modules.load_module(module_name, config)
     -- Don't bother loading the module from disk if it's already loaded
     if neorg.modules.is_module_loaded(module_name) then
@@ -250,7 +252,7 @@ end
 --- Gets the version of a module
 -- Reads the module's public table and looks for a version variable, then converts it from a string into a table, like so: { major = <number>, minor = <number>, patch = <number> }
 --- @tparam string module_name The name of a valid, loaded module.
--- @Return struct | nil (if any error occurs)
+-- @treturn struct|nil (if any error occurs)
 function neorg.modules.get_module_version(module_name)
     -- If the module isn't loaded then don't bother retrieving its version
     if not neorg.modules.is_module_loaded(module_name) then

@@ -1,6 +1,6 @@
 --[[--
 	Neorg module for managing highlight groups.
-	@module core.highlights
+	@module neorg.modules.core.highlights
 --]]
 
 require("neorg.modules.base")
