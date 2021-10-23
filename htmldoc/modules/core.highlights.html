@@ -46,7 +46,7 @@
   <li><a href="../modules/neorg.modules.html">neorg.modules</a></li>
   <li><a href="../modules/neorg.modules.base.html">neorg.modules.base</a></li>
   <li><a href="../modules/neorg.modules.core.autocommands.module.html">neorg.modules.core.autocommands.module</a></li>
-  <li><strong>neorg.modules.core.highlights.module</strong></li>
+  <li><strong>core.highlights</strong></li>
   <li><a href="../modules/neorg.modules.core.integrations.nvim-compe.module.html">neorg.modules.core.integrations.nvim-compe.module</a></li>
   <li><a href="../modules/neorg.modules.core.integrations.treesitter.module.html">neorg.modules.core.integrations.treesitter.module</a></li>
   <li><a href="../modules/neorg.modules.core.keybinds.module.html">neorg.modules.core.keybinds.module</a></li>
@@ -67,38 +67,42 @@
 
 <div id="content">
 
-<h1>Module <code>neorg.modules.core.highlights.module</code></h1>
-<p>Defines all the highlight groups for Neorg
- Reads the highlights configuration table and applies all defined highlights</p>
+<h1>Module <code>core.highlights</code></h1>
+<p>Neorg module for managing highlight groups.</p>
 <p></p>
 
 
 <h2><a href="#Functions">Functions</a></h2>
 <table class="function_list">
 	<tr>
-	<td class="name" nowrap><a href="#descend">descend (highlights, prefix)</a></td>
+	<td class="name" nowrap><a href="#trigger_highlights">trigger_highlights ()</a></td>
+	<td class="summary">Defines all the highlight groups for Neorg
+Reads the highlights configuration table and applies all defined highlights</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#descend">descend (highlights, callback, prefix)</a></td>
 	<td class="summary">Descends down a tree of highlights and applies them
- Recursively descends down the highlight configuration and applies every highlight accordingly</td>
+Recursively descends down the highlight configuration and applies every highlight accordingly</td>
 	</tr>
 	<tr>
 	<td class="name" nowrap><a href="#add_highlights">add_highlights (highlights)</a></td>
 	<td class="summary">Adds a set of highlights from a table
- Takes in a table of highlights and applies them to the current buffer</td>
+Takes in a table of highlights and applies them to the current buffer</td>
 	</tr>
 	<tr>
 	<td class="name" nowrap><a href="#add_dim">add_dim (dim)</a></td>
 	<td class="summary">Adds a set of dims from a table
- Takes in a table of items to dim and applies the dimming to them</td>
+Takes in a table of items to dim and applies the dimming to them</td>
 	</tr>
 	<tr>
 	<td class="name" nowrap><a href="#clear_highlights">clear_highlights ()</a></td>
 	<td class="summary">Clears all the highlights defined by Neorg
- Assigns all Neorg* highlights to `clear`</td>
+Assigns all Neorg* highlights to <!-- raw HTML omitted -->clear<!-- raw HTML omitted --></td>
 	</tr>
 	<tr>
 	<td class="name" nowrap><a href="#descend">descend (highlights, prefix)</a></td>
 	<td class="summary">Descends down a tree of highlights and clears them
- Recursively descends down the highlight configuration and clears every highlight accordingly</td>
+Recursively descends down the highlight configuration and clears every highlight accordingly</td>
 	</tr>
 </table>
 
@@ -110,23 +114,42 @@
 
     <dl class="function">
     <dt>
+    <a name = "trigger_highlights"></a>
+    <strong>trigger_highlights ()</strong>
+    </dt>
+    <dd>
+    Defines all the highlight groups for Neorg
+Reads the highlights configuration table and applies all defined highlights
+
+
+
+
+
+
+
+</dd>
+    <dt>
     <a name = "descend"></a>
-    <strong>descend (highlights, prefix)</strong>
+    <strong>descend (highlights, callback, prefix)</strong>
     </dt>
     <dd>
     Descends down a tree of highlights and applies them
- Recursively descends down the highlight configuration and applies every highlight accordingly
+Recursively descends down the highlight configuration and applies every highlight accordingly
 
 
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">highlights</span>
             <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
-         The table of highlights to descend down
+        The table of highlights to descend down
+        </li>
+        <li><span class="parameter">callback</span>
+            <span class="types"><span class="type">function</span></span>
+        A callback function to be invoked for every highlight. If it returns true then we should recurse down the table tree further
         </li>
         <li><span class="parameter">prefix</span>
             <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
-         Should be only used by the function itself, acts as a "savestate" so the function can keep track of what path it has descended down
+        Should be only used by the function itself, acts as a &quot;savestate&quot; so the function can keep track of what path it has descended down
         </li>
     </ul>
 
@@ -141,14 +164,14 @@
     </dt>
     <dd>
     Adds a set of highlights from a table
- Takes in a table of highlights and applies them to the current buffer
+Takes in a table of highlights and applies them to the current buffer
 
 
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">highlights</span>
             <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
-         A table of highlights
+        A table of highlights
         </li>
     </ul>
 
@@ -163,14 +186,14 @@
     </dt>
     <dd>
     Adds a set of dims from a table
- Takes in a table of items to dim and applies the dimming to them
+Takes in a table of items to dim and applies the dimming to them
 
 
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">dim</span>
             <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
-         A table of items to dim
+        A table of items to dim
         </li>
     </ul>
 
@@ -185,7 +208,7 @@
     </dt>
     <dd>
     Clears all the highlights defined by Neorg
- Assigns all Neorg* highlights to `clear`
+Assigns all Neorg* highlights to <!-- raw HTML omitted -->clear<!-- raw HTML omitted -->
 
 
 
@@ -200,18 +223,18 @@
     </dt>
     <dd>
     Descends down a tree of highlights and clears them
- Recursively descends down the highlight configuration and clears every highlight accordingly
+Recursively descends down the highlight configuration and clears every highlight accordingly
 
 
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">highlights</span>
             <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
-         The table of highlights to descend down
+        The table of highlights to descend down
         </li>
         <li><span class="parameter">prefix</span>
             <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
-         Should be only used by the function itself, acts as a "savestate" so the function can keep track of what path it has descended down
+        Should be only used by the function itself, acts as a &quot;savestate&quot; so the function can keep track of what path it has descended down
         </li>
     </ul>
 
@@ -227,7 +250,7 @@
 </div> <!-- id="main" -->
 <div id="about">
 <i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.6</a></i>
-<i style="float:right;">Last updated 2021-10-23 16:39:33 </i>
+<i style="float:right;">Last updated 2021-10-23 17:42:20 </i>
 </div> <!-- id="about" -->
 </div> <!-- id="container" -->
 </body>

@@ -68,10 +68,11 @@
 <div id="content">
 
 <h1>Module <code>events</code></h1>
-<p>Neorg Event File
-    This file is responsible for dealing with event handling and broadcasting.</p>
-<p>
-    All modules that subscribe to an event will receive it once it is triggered.</p>
+<p><p>Neorg Event File</p>
+<!-- raw HTML omitted -->
+</p>
+<p><!-- raw HTML omitted -->
+</p>
 
 
 <h2><a href="#Functions">Functions</a></h2>
@@ -79,33 +80,33 @@
 	<tr>
 	<td class="name" nowrap><a href="#neorg.events.split_event_type">neorg.events.split_event_type (type)</a></td>
 	<td class="summary">Splits a full module event path into two
- The working of this function is best illustrated with an example:
- If type == 'core.some_plugin.events.my_event', this function will return { 'core.some_plugin', 'my_event' }</td>
+The working of this function is best illustrated with an example:
+If type == 'core.some_plugin.events.my_event', this function will return { 'core.some_plugin', 'my_event' }</td>
 	</tr>
 	<tr>
 	<td class="name" nowrap><a href="#neorg.events.get_event_template">neorg.events.get_event_template (module, type)</a></td>
 	<td class="summary">Returns an event template as defined by a module
- Returns an event template defined in module.events.defined</td>
+Returns an event template defined in module.events.defined</td>
 	</tr>
 	<tr>
 	<td class="name" nowrap><a href="#neorg.events.define">neorg.events.define (module, name)</a></td>
 	<td class="summary">Creates an event that derives from neorg.events.base_event
- Creates a deep copy of the neorg.events.base_event event and returns it with a custom type and referrer</td>
+Creates a deep copy of the neorg.events.base_event event and returns it with a custom type and referrer</td>
 	</tr>
 	<tr>
 	<td class="name" nowrap><a href="#neorg.events.create">neorg.events.create (module, type, content)</a></td>
 	<td class="summary">Creates an instance of an event type
- Returns a copy of the event template provided by a module</td>
+Returns a copy of the event template provided by a module</td>
 	</tr>
 	<tr>
 	<td class="name" nowrap><a href="#neorg.events.broadcast_event">neorg.events.broadcast_event (event)</a></td>
 	<td class="summary">Broadcasts an event
- Sends an event to all subscribed modules.</td>
+Sends an event to all subscribed modules.</td>
 	</tr>
 	<tr>
 	<td class="name" nowrap><a href="#neorg.events.send_event">neorg.events.send_event (recipient, event)</a></td>
 	<td class="summary">Sends an event to an individual module
- Instead of broadcasting to all loaded modules, send_event() only sends to one module</td>
+Instead of broadcasting to all loaded modules, send_event() only sends to one module</td>
 	</tr>
 </table>
 
@@ -122,15 +123,15 @@
     </dt>
     <dd>
     Splits a full module event path into two
- The working of this function is best illustrated with an example:
- If type == 'core.some_plugin.events.my_event', this function will return { 'core.some_plugin', 'my_event' }
+The working of this function is best illustrated with an example:
+If type == 'core.some_plugin.events.my_event', this function will return { 'core.some_plugin', 'my_event' }
 
 
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">type</span>
             <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
-         The full path of a module event
+        The full path of a module event
         </li>
     </ul>
 
@@ -145,18 +146,18 @@
     </dt>
     <dd>
     Returns an event template as defined by a module
- Returns an event template defined in module.events.defined
+Returns an event template defined in module.events.defined
 
 
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">module</span>
             <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
-         A reference to the module invoking the function
+        A reference to the module invoking the function
         </li>
         <li><span class="parameter">type</span>
             <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
-         A full path to a valid event type (e.g. 'core.module.events.some_event')
+        A full path to a valid event type (e.g. 'core.module.events.some_event')
         </li>
     </ul>
 
@@ -171,18 +172,18 @@
     </dt>
     <dd>
     Creates an event that derives from neorg.events.base_event
- Creates a deep copy of the neorg.events.base_event event and returns it with a custom type and referrer
+Creates a deep copy of the neorg.events.base_event event and returns it with a custom type and referrer
 
 
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">module</span>
             <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
-         A reference to the module invoking the function
+        A reference to the module invoking the function
         </li>
         <li><span class="parameter">name</span>
             <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
-         A relative path to a valid event template
+        A relative path to a valid event template
         </li>
     </ul>
 
@@ -197,22 +198,22 @@
     </dt>
     <dd>
     Creates an instance of an event type
- Returns a copy of the event template provided by a module
+Returns a copy of the event template provided by a module
 
 
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">module</span>
             <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
-         A reference to the module invoking the function
+        A reference to the module invoking the function
         </li>
         <li><span class="parameter">type</span>
             <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
-         A full path to a valid event type (e.g. 'core.module.events.some_event')
+        A full path to a valid event type (e.g. 'core.module.events.some_event')
         </li>
         <li><span class="parameter">content</span>
             <span class="types"><span class="type">any</span></span>
-         The content of the event, can be anything from a string to a table to whatever you please
+        The content of the event, can be anything from a string to a table to whatever you please
         </li>
     </ul>
 
@@ -227,14 +228,14 @@
     </dt>
     <dd>
     Broadcasts an event
- Sends an event to all subscribed modules.  The event contains the filename, filehead, cursor position and line content as a bonus.
+Sends an event to all subscribed modules.  The event contains the filename, filehead, cursor position and line content as a bonus.
 
 
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">event</span>
             <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
-         An event, usually created by neorg.events.create()
+        An event, usually created by neorg.events.create()
         </li>
     </ul>
 
@@ -249,18 +250,18 @@
     </dt>
     <dd>
     Sends an event to an individual module
- Instead of broadcasting to all loaded modules, send_event() only sends to one module
+Instead of broadcasting to all loaded modules, send_event() only sends to one module
 
 
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">recipient</span>
             <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
-         The name of a loaded module that will be the recipient of the event
+        The name of a loaded module that will be the recipient of the event
         </li>
         <li><span class="parameter">event</span>
             <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
-         An event, usually created by neorg.events.create()
+        An event, usually created by neorg.events.create()
         </li>
     </ul>
 
@@ -276,7 +277,7 @@
 </div> <!-- id="main" -->
 <div id="about">
 <i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.6</a></i>
-<i style="float:right;">Last updated 2021-10-23 16:47:26 </i>
+<i style="float:right;">Last updated 2021-10-23 17:42:20 </i>
 </div> <!-- id="about" -->
 </div> <!-- id="container" -->
 </body>
