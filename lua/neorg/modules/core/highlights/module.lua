@@ -63,9 +63,9 @@ module.public = {
 
         --- Descends down a tree of highlights and applies them
         -- Recursively descends down the highlight configuration and applies every highlight accordingly
-        --- @tparam highlights table The table of highlights to descend down
+        --- @tparam table highlights The table of highlights to descend down
         -- @Param  callback (function(hl_name, highlight, prefix) -> bool) - a callback function to be invoked for every highlight. If it returns true then we should recurse down the table tree further
-        --- @tparam prefix string Should be only used by the function itself, acts as a "savestate" so the function can keep track of what path it has descended down
+        --- @tparam string prefix Should be only used by the function itself, acts as a "savestate" so the function can keep track of what path it has descended down
         descend = function(highlights, callback, prefix)
             -- Loop through every highlight defined in the provided table
             for hl_name, highlight in pairs(highlights) do
@@ -127,7 +127,7 @@ module.public = {
 
     --- Adds a set of highlights from a table
     -- Takes in a table of highlights and applies them to the current buffer
-    --- @tparam highlights table A table of highlights
+    --- @tparam table highlights A table of highlights
     add_highlights = function(highlights)
         module.config.public.highlights = vim.tbl_deep_extend(
             "force",
@@ -139,7 +139,7 @@ module.public = {
 
     --- Adds a set of dims from a table
     -- Takes in a table of items to dim and applies the dimming to them
-    --- @tparam dim table A table of items to dim
+    --- @tparam table dim A table of items to dim
     add_dim = function(dim)
         module.config.public.dim = vim.tbl_deep_extend("force", module.config.public.dim, dim or {})
         module.public.trigger_highlights()
@@ -152,8 +152,8 @@ module.public = {
 
         --- Descends down a tree of highlights and clears them
         -- Recursively descends down the highlight configuration and clears every highlight accordingly
-        --- @tparam highlights table The table of highlights to descend down
-        --- @tparam prefix string Should be only used by the function itself, acts as a "savestate" so the function can keep track of what path it has descended down
+        --- @tparam table highlights The table of highlights to descend down
+        --- @tparam string prefix Should be only used by the function itself, acts as a "savestate" so the function can keep track of what path it has descended down
         descend = function(highlights, prefix)
             -- Loop through every defined highlight
             for hl_name, highlight in pairs(highlights) do

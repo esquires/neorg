@@ -6,8 +6,8 @@
 neorg.utils = {
     --- Requires a file from the context of the current module
     -- Allows the module creator to require a file from within the module's cwd
-    --- @tparam module table The module creator's module
-    --- @tparam filename string A path to the file
+    --- @tparam table module The module creator's module
+    --- @tparam string filename A path to the file
     require = function(module, filename)
         -- Here we perform a hacky double-require. You love to see it!
         -- We do this because there may be times where a module will reference
@@ -46,7 +46,7 @@ neorg.utils = {
 
     --- Returns a list of languages supported by Neorg
     -- Returns an array of strings, the array being a list of languages that Neorg can inject
-    --- @tparam values boolean If set to true will return an array of strings, if false will return a key-value table
+    --- @tparam boolean values If set to true will return an array of strings, if false will return a key-value table
     get_language_list = function(values)
         local ret = {
             ["bash"] = {},
@@ -167,8 +167,8 @@ neorg.utils = {
     end,
 
     --- Perform a backwards search for a character and return the index of that character
-    --- @tparam str string The string to search
-    --- @tparam char string The substring to search for
+    --- @tparam string str The string to search
+    --- @tparam string char The substring to search for
     --- @return number|nil #The index of the found substring or `nil` if not found
     rfind = function(str, char)
         local length = str:len()

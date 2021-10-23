@@ -236,9 +236,9 @@ module.public = {
 
     --- Creates a new indent
     -- Sets a new set of rules that when fulfilled will indent the text properly
-    --- @tparam match string A regex that should match the line above the newly placed line
+    --- @tparam string match A regex that should match the line above the newly placed line
     -- @Param  indent (function(matches) -> number) - a function that should return the level of indentation in spaces for that line
-    --- @tparam current boolean If true checks the current line rather than the previous non-blank line
+    --- @tparam boolean current If true checks the current line rather than the previous non-blank line
     create_indent = function(match, indent, current)
         local line_number = current and vim.api.nvim_win_get_cursor(0)[1]
             or vim.fn.prevnonblank(vim.api.nvim_win_get_cursor(0)[1] - 1)
@@ -547,7 +547,7 @@ module.public = {
             }, function(result, _)
                 --- Converts a node type (like "heading1" or "marker") into a char
                 --- representation ("*"/"|" etc.)
-                --- @tparam type string a node type
+                --- @tparam string type a node type
                 local function from_type_to_link_identifier(type)
                     if vim.startswith(type, "heading") then
                         local start = ("heading"):len()
@@ -560,7 +560,7 @@ module.public = {
                 end
 
                 --- Returns the type of node we should search for from a link type
-                --- @tparam link_type string the type of link we're dealing with
+                --- @tparam string link_type the type of link we're dealing with
                 local function extract_node_type(link_type)
                     if vim.startswith(link_type, "link_end_heading") then
                         local start = ("link_end_heading"):len()

@@ -369,7 +369,7 @@ module.public = {
 
     --- Gets all nodes of a given type from the AST
     -- Retrieves all nodes in the form of a list
-    --- @tparam type string The type of node to filter out
+    --- @tparam string type The type of node to filter out
     get_all_nodes = function(type)
         local result = {}
 
@@ -380,7 +380,7 @@ module.public = {
 
             --- Function to recursively descend down the syntax tree
             -- Recursively searches for a node of a given type
-            --- @tparam node userdata/treesitter node The starting point for the search
+            --- @tparam userdata node/treesitter node The starting point for the search
             local function descend(node)
                 -- Iterate over all children of the node and try to match their type
                 for child, _ in node:iter_children() do
@@ -403,7 +403,7 @@ module.public = {
 
     --- Returns the first occurence of a node in the AST
     -- Returns the first node of given type if present
-    --- @tparam type string The type of node to search for
+    --- @tparam string type The type of node to search for
     get_first_node = function(type)
         local ret = nil
 
@@ -432,7 +432,7 @@ module.public = {
 
             --- Function to recursively descend down the syntax tree
             -- Recursively searches for a node of a given type
-            --- @tparam node userdata/treesitter node The starting point for the search
+            --- @tparam userdata node/treesitter node The starting point for the search
             local function descend(node)
                 -- Iterate over all children of the node and try to match their type
                 for child, _ in node:iter_children() do
@@ -458,7 +458,7 @@ module.public = {
 
     --- Returns metadata for a tag
     -- Given a node this function will break down the AST elements and return the corresponding text for certain nodes
-    --- @tparam tag_node userdata/treesitter node A node of type tag/carryover_tag
+    --- @tparam userdata tag_node/treesitter node A node of type tag/carryover_tag
     get_tag_info = function(tag_node, check_parent)
         if not tag_node or (tag_node:type() ~= "tag" and tag_node:type() ~= "carryover_tag") then
             return nil
@@ -518,7 +518,7 @@ module.public = {
 
     --- Parses data from an @ tag
     -- Used to extract data from e.g. document.meta
-    --- @tparam tag_content string The content of the tag (without the beginning and end declarations)
+    --- @tparam string tag_content The content of the tag (without the beginning and end declarations)
     parse_tag = function(tag_content)
         local result = {}
 
@@ -532,7 +532,7 @@ module.public = {
     end,
 
     --- Invokes a callback for every element of the current tree
-    --- @tparam callback function The callback to invoke
+    --- @tparam function callback The callback to invoke
     -- TODO: docs
     tree_map = function(callback, ts_tree)
         local tree = ts_tree or vim.treesitter.get_parser(0, "norg"):parse()[1]
@@ -605,7 +605,7 @@ module.public = {
     end,
 
     --- Extracts the document root from the current document
-    --- @tparam buf number The number of the buffer to extract (can be nil)
+    --- @tparam number buf The number of the buffer to extract (can be nil)
     --- @return userdata the root node of the document
     get_document_root = function(buf)
         local tree = vim.treesitter.get_parser(buf or 0, "norg"):parse()[1]
@@ -619,8 +619,8 @@ module.public = {
     end,
 
     --- Extracts the text from a node (only the first line)
-    --- @tparam node userdata a treesitter node to extract the text from
-    --- @tparam buf number the buffer number. This is required to verify the source of the node. Can be nil in which case it is treated as "0"
+    --- @tparam userdata node a treesitter node to extract the text from
+    --- @tparam number buf the buffer number. This is required to verify the source of the node. Can be nil in which case it is treated as "0"
     --- @return string The contents of the node in the form of a string
     get_node_text = function(node, buf)
         if not node then

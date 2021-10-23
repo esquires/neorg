@@ -64,7 +64,7 @@ module.public = {
 
     --- Adds a new mode to the list of available modes
     -- This function lets the core.mode module know that a new mode should be added. This will be used in autocompletion for the :Neorg command
-    --- @tparam mode_name string The name of the mode to add
+    --- @tparam string mode_name The name of the mode to add
     add_mode = function(mode_name)
         -- If the mode is equal to all then error out - that mode name is reserved
         if mode_name == "all" then
@@ -97,7 +97,7 @@ module.public = {
 
     --- Sets the current neorg mode
     -- Broadcasts to all subscribed modules that the mode has been changed
-    --- @tparam mode_name string The name of the mode to switch to
+    --- @tparam string mode_name The name of the mode to switch to
     set_mode = function(mode_name)
         -- If the mode name is the same as it used to be then don't bother
         if module.config.public.current_mode == mode_name then

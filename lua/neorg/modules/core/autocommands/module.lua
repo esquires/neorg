@@ -36,8 +36,8 @@ local module = neorg.modules.create("core.autocommands")
 
 --- Autocommand callback
 -- This function gets invoked whenever a core.autocommands enabled autocommand is triggered. Note that this function should be only used internally
---- @tparam name string The name of the autocommand that was just triggered
---- @tparam triggered_from_norg boolean If true, that means we have received this event as part of a *.norg autocommand
+--- @tparam string name The name of the autocommand that was just triggered
+--- @tparam boolean triggered_from_norg If true, that means we have received this event as part of a *.norg autocommand
 function _neorg_module_autocommand_triggered(name, triggered_from_norg)
     neorg.events.broadcast_event(neorg.events.create(module, name, { norg = triggered_from_norg }))
 end
@@ -51,8 +51,8 @@ module.public = {
 
     --- Enable an autocommand event
     -- By default, all autocommands are disabled for performance reasons. To enable them, use this command. If an invalid autocmd is given nothing happens.
-    --- @tparam autocmd string The relative name of the autocommand to enable
-    --- @tparam dont_isolate boolean Defaults to false. Specifies whether the autocommand should run globally (*) instead of in Neorg files (*.norg)
+    --- @tparam string autocmd The relative name of the autocommand to enable
+    --- @tparam boolean dont_isolate Defaults to false. Specifies whether the autocommand should run globally (*) instead of in Neorg files (*.norg)
     enable_autocommand = function(autocmd, dont_isolate)
         dont_isolate = dont_isolate or false
 
