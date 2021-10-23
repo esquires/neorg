@@ -99,7 +99,7 @@ surpass _every_ other text editor. One that will give you all the bragging right
   what if we told you it's possible to eliminate those problems completely,
   all whilst keeping that familiar markdown feel?
 
-  Enter the .norg file format, whose base spec is [almost complete](docs/NFF-0.1-spec.md).
+  Enter the .norg file format, whose base spec is [almost complete](doc/NFF-0.1-spec.md).
   The cross between all the best things from org and the best things from markdown, revised and merged into one.
 - Keybinds that _make sense_ - vim's keybind philosophy is unlike any other, and we want to keep that vibe.
   Keys form a "language", one that you can speak, not one that you need to learn off by heart.
@@ -293,7 +293,7 @@ We tried focusing heavily on the backend first, but now that that is almost done
 	- [ ] Smarter todo item toggling with the TreeSitter AST
 
 It's all about the patience! We're gonna deliver all the juicy features ASAP.
-In the meantime you might be interested in reading the [spec](docs/NFF-0.1-spec.md) and familiarizing yourself with the new format :D
+In the meantime you might be interested in reading the [spec](doc/NFF-0.1-spec.md) and familiarizing yourself with the new format :D
 
 Here are some things we *are* working on:
 - Fully fledged GTD workflow (with @Danymat)
@@ -341,7 +341,7 @@ The wiki is the go-to place if you need answers to anything Neorg-related. Usage
 It's all there, so we recommend you seriously go [read it](https://github.com/nvim-neorg/neorg/wiki)!
 
 # :computer: Contributing
-Contributions are always welcome and will always be welcome. You can check [CONTRIBUTING.md](docs/CONTRIBUTING.md) if you wanna find out more.
+Contributions are always welcome and will always be welcome. You can check [CONTRIBUTING.md](doc/CONTRIBUTING.md) if you wanna find out more.
 Have a cool idea? Want to implement something, but don't know where to start? I'm always here to help! You can always create an issue or join the discord
 and chat there.
 
