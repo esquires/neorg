@@ -19,7 +19,8 @@ jobs:
 
       - name: Generate documentation
         run: |
-          sudo apt install lua5.1
+          sudo apt update -q
+          sudo apt install -y -q lua5.1
           cd ./neorg
           make gen-docs
 
