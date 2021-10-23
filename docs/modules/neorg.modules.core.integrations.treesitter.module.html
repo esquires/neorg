@@ -1,0 +1,278 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<head>
+    <title>Reference</title>
+    <link rel="stylesheet" href="../ldoc.css" type="text/css" />
+</head>
+<body>
+
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+
+<div id="main">
+
+
+<!-- Menu -->
+
+<div id="navigation">
+<br/>
+<h1>ldoc</h1>
+
+
+<ul>
+  <li><a href="../index.html">Index</a></li>
+</ul>
+
+<h2>Contents</h2>
+<ul>
+<li><a href="#Functions">Functions</a></li>
+</ul>
+
+
+<h2>Modules</h2>
+<ul class="nowrap">
+  <li><a href="../modules/neorg.html">neorg</a></li>
+  <li><a href="../modules/callbacks.html">callbacks</a></li>
+  <li><a href="../modules/events.html">events</a></li>
+  <li><a href="../modules/neorg.external.helpers.html">neorg.external.helpers</a></li>
+  <li><a href="../modules/neorg.modules.html">neorg.modules</a></li>
+  <li><a href="../modules/neorg.modules.base.html">neorg.modules.base</a></li>
+  <li><a href="../modules/neorg.modules.core.autocommands.module.html">neorg.modules.core.autocommands.module</a></li>
+  <li><a href="../modules/neorg.modules.core.highlights.html">neorg.modules.core.highlights</a></li>
+  <li><a href="../modules/neorg.modules.core.integrations.nvim-compe.module.html">neorg.modules.core.integrations.nvim-compe.module</a></li>
+  <li><strong>neorg.modules.core.integrations.treesitter.module</strong></li>
+  <li><a href="../modules/neorg.modules.core.keybinds.module.html">neorg.modules.core.keybinds.module</a></li>
+  <li><a href="../modules/neorg.modules.core.mode.module.html">neorg.modules.core.mode.module</a></li>
+  <li><a href="../modules/neorg.modules.core.neorgcmd.module.html">neorg.modules.core.neorgcmd.module</a></li>
+  <li><a href="../modules/neorg.modules.core.norg.completion.module.html">neorg.modules.core.norg.completion.module</a></li>
+  <li><a href="../modules/neorg.modules.core.norg.concealer.module.html">neorg.modules.core.norg.concealer.module</a></li>
+  <li><a href="../modules/neorg.modules.core.norg.dirman.module.html">neorg.modules.core.norg.dirman.module</a></li>
+  <li><a href="../modules/neorg.modules.core.norg.esupports.module.html">neorg.modules.core.norg.esupports.module</a></li>
+  <li><a href="../modules/neorg.modules.core.norg.qol.todo_items.module.html">neorg.modules.core.norg.qol.todo_items.module</a></li>
+  <li><a href="../modules/neorg.modules.core.queries.native.module.html">neorg.modules.core.queries.native.module</a></li>
+  <li><a href="../modules/neorg.modules.core.ui.module.html">neorg.modules.core.ui.module</a></li>
+  <li><a href="../modules/neorg.modules.core.ui.selection_popup.html">neorg.modules.core.ui.selection_popup</a></li>
+  <li><a href="../modules/neorg.modules.core.ui.text_popup.html">neorg.modules.core.ui.text_popup</a></li>
+</ul>
+
+</div>
+
+<div id="content">
+
+<h1>Module <code>neorg.modules.core.integrations.treesitter.module</code></h1>
+<p>Gets all nodes of a given type from the AST
+ Retrieves all nodes in the form of a list</p>
+<p>
+
+</p>
+
+
+<h2><a href="#Functions">Functions</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#get_first_node">get_first_node (type)</a></td>
+	<td class="summary">Returns the first occurence of a node in the AST
+ Returns the first node of given type if present</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#get_tag_info">get_tag_info (tag_node, check_parent)</a></td>
+	<td class="summary">Returns metadata for a tag
+ Given a node this function will break down the AST elements and return the corresponding text for certain nodes</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#parse_tag">parse_tag (tag_content)</a></td>
+	<td class="summary">Parses data from an @ tag
+ Used to extract data from e.g.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#tree_map">tree_map (callback, ts_tree)</a></td>
+	<td class="summary">Invokes a callback for every element of the current tree</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#get_document_root">get_document_root (buf)</a></td>
+	<td class="summary">Extracts the document root from the current document</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#get_node_text">get_node_text (node, buf)</a></td>
+	<td class="summary">Extracts the text from a node (only the first line)</td>
+	</tr>
+</table>
+
+<br/>
+<br/>
+
+
+    <h2 class="section-header "><a name="Functions"></a>Functions</h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "get_first_node"></a>
+    <strong>get_first_node (type)</strong>
+    </dt>
+    <dd>
+    Returns the first occurence of a node in the AST
+ Returns the first node of given type if present
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">type</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         The type of node to search for
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "get_tag_info"></a>
+    <strong>get_tag_info (tag_node, check_parent)</strong>
+    </dt>
+    <dd>
+    Returns metadata for a tag
+ Given a node this function will break down the AST elements and return the corresponding text for certain nodes
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">tag_node</span>
+            <span class="types"><span class="type">userdata</span></span>
+        /treesitter node A node of type tag/carryover_tag
+        </li>
+        <li><span class="parameter">check_parent</span>
+            <span class="types"><span class="type">boolean</span></span>
+         Determines whether or not parent nodes should also be parsed
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "parse_tag"></a>
+    <strong>parse_tag (tag_content)</strong>
+    </dt>
+    <dd>
+    Parses data from an @ tag
+ Used to extract data from e.g.  document.meta
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">tag_content</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         The content of the tag (without the beginning and end declarations)
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "tree_map"></a>
+    <strong>tree_map (callback, ts_tree)</strong>
+    </dt>
+    <dd>
+    Invokes a callback for every element of the current tree
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">callback</span>
+            <span class="types"><span class="type">function</span></span>
+         The callback to invoke
+        </li>
+        <li><span class="parameter">ts_tree</span>
+            <span class="types"><span class="type">userdata[opt=parser:parse()]</span></span>
+         The tree to map the function to
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "get_document_root"></a>
+    <strong>get_document_root (buf)</strong>
+    </dt>
+    <dd>
+    Extracts the document root from the current document
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">buf</span>
+            <span class="types"><span class="type">number</span></span>
+         The number of the buffer to extract (can be nil)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        userdata the root node of the document
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "get_node_text"></a>
+    <strong>get_node_text (node, buf)</strong>
+    </dt>
+    <dd>
+    Extracts the text from a node (only the first line)
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">node</span>
+            <span class="types"><span class="type">userdata</span></span>
+         a treesitter node to extract the text from
+        </li>
+        <li><span class="parameter">buf</span>
+            <span class="types"><span class="type">number</span></span>
+         the buffer number. This is required to verify the source of the node. Can be nil in which case it is treated as "0"
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        string The contents of the node in the form of a string
+    </ol>
+
+
+
+
+</dd>
+</dl>
+
+
+</div> <!-- id="content" -->
+</div> <!-- id="main" -->
+<div id="about">
+<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.6</a></i>
+<i style="float:right;">Last updated 2021-10-23 18:36:48 </i>
+</div> <!-- id="about" -->
+</div> <!-- id="container" -->
+</body>
+</html>

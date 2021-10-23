@@ -1,0 +1,191 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<head>
+    <title>Reference</title>
+    <link rel="stylesheet" href="ldoc.css" type="text/css" />
+</head>
+<body>
+
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+
+<div id="main">
+
+
+<!-- Menu -->
+
+<div id="navigation">
+<br/>
+<h1>ldoc</h1>
+
+
+
+
+
+<h2>Modules</h2>
+<ul class="nowrap">
+  <li><a href="modules/neorg.html">neorg</a></li>
+  <li><a href="modules/callbacks.html">callbacks</a></li>
+  <li><a href="modules/events.html">events</a></li>
+  <li><a href="modules/neorg.external.helpers.html">neorg.external.helpers</a></li>
+  <li><a href="modules/neorg.modules.html">neorg.modules</a></li>
+  <li><a href="modules/neorg.modules.base.html">neorg.modules.base</a></li>
+  <li><a href="modules/neorg.modules.core.autocommands.module.html">neorg.modules.core.autocommands.module</a></li>
+  <li><a href="modules/neorg.modules.core.highlights.html">neorg.modules.core.highlights</a></li>
+  <li><a href="modules/neorg.modules.core.integrations.nvim-compe.module.html">neorg.modules.core.integrations.nvim-compe.module</a></li>
+  <li><a href="modules/neorg.modules.core.integrations.treesitter.module.html">neorg.modules.core.integrations.treesitter.module</a></li>
+  <li><a href="modules/neorg.modules.core.keybinds.module.html">neorg.modules.core.keybinds.module</a></li>
+  <li><a href="modules/neorg.modules.core.mode.module.html">neorg.modules.core.mode.module</a></li>
+  <li><a href="modules/neorg.modules.core.neorgcmd.module.html">neorg.modules.core.neorgcmd.module</a></li>
+  <li><a href="modules/neorg.modules.core.norg.completion.module.html">neorg.modules.core.norg.completion.module</a></li>
+  <li><a href="modules/neorg.modules.core.norg.concealer.module.html">neorg.modules.core.norg.concealer.module</a></li>
+  <li><a href="modules/neorg.modules.core.norg.dirman.module.html">neorg.modules.core.norg.dirman.module</a></li>
+  <li><a href="modules/neorg.modules.core.norg.esupports.module.html">neorg.modules.core.norg.esupports.module</a></li>
+  <li><a href="modules/neorg.modules.core.norg.qol.todo_items.module.html">neorg.modules.core.norg.qol.todo_items.module</a></li>
+  <li><a href="modules/neorg.modules.core.queries.native.module.html">neorg.modules.core.queries.native.module</a></li>
+  <li><a href="modules/neorg.modules.core.ui.module.html">neorg.modules.core.ui.module</a></li>
+  <li><a href="modules/neorg.modules.core.ui.selection_popup.html">neorg.modules.core.ui.selection_popup</a></li>
+  <li><a href="modules/neorg.modules.core.ui.text_popup.html">neorg.modules.core.ui.text_popup</a></li>
+</ul>
+
+</div>
+
+<div id="content">
+
+
+
+<h2>Modules</h2>
+<table class="module_list">
+	<tr>
+		<td class="name"  nowrap><a href="modules/neorg.html">neorg</a></td>
+		<td class="summary">Sets up neorg
+ This function takes in a user configuration, parses it, initializes everything and launches neorg if inside a .norg or .org file</td>
+	</tr>
+	<tr>
+		<td class="name"  nowrap><a href="modules/callbacks.html">callbacks</a></td>
+		<td class="summary">
+<p>Neorg User Callbacks File</p>
+
+<pre>
+User callbacks are ways <span class="keyword">for</span> the user to directly interact with Neorg <span class="keyword">and</span> respond on certain events.
+</pre>
+
+</td>
+	</tr>
+	<tr>
+		<td class="name"  nowrap><a href="modules/events.html">events</a></td>
+		<td class="summary">
+<p>Neorg Event File</p>
+
+<pre>
+This file is responsible <span class="keyword">for</span> dealing with event handling <span class="keyword">and</span> broadcasting.
+</pre>
+
+</td>
+	</tr>
+	<tr>
+		<td class="name"  nowrap><a href="modules/neorg.external.helpers.html">neorg.external.helpers</a></td>
+		<td class="summary">Requires a file from the context of the current module
+ Allows the module creator to require a file from within the module's cwd</td>
+	</tr>
+	<tr>
+		<td class="name"  nowrap><a href="modules/neorg.modules.html">neorg.modules</a></td>
+		<td class="summary">Neorg's module manager.</td>
+	</tr>
+	<tr>
+		<td class="name"  nowrap><a href="modules/neorg.modules.base.html">neorg.modules.base</a></td>
+		<td class="summary">Creates a new module
+ Returns a module that derives from neorg.modules.module_base, exposing all the necessary function and variables</td>
+	</tr>
+	<tr>
+		<td class="name"  nowrap><a href="modules/neorg.modules.core.autocommands.module.html">neorg.modules.core.autocommands.module</a></td>
+		<td class="summary">Autocommand callback
+ This function gets invoked whenever a core.autocommands enabled autocommand is triggered.</td>
+	</tr>
+	<tr>
+		<td class="name"  nowrap><a href="modules/neorg.modules.core.highlights.html">neorg.modules.core.highlights</a></td>
+		<td class="summary">Neorg module for managing highlight groups.</td>
+	</tr>
+	<tr>
+		<td class="name"  nowrap><a href="modules/neorg.modules.core.integrations.nvim-compe.module.html">neorg.modules.core.integrations.nvim-compe.module</a></td>
+		<td class="summary">Creates a new nvim-compe source</td>
+	</tr>
+	<tr>
+		<td class="name"  nowrap><a href="modules/neorg.modules.core.integrations.treesitter.module.html">neorg.modules.core.integrations.treesitter.module</a></td>
+		<td class="summary">Gets all nodes of a given type from the AST
+ Retrieves all nodes in the form of a list</td>
+	</tr>
+	<tr>
+		<td class="name"  nowrap><a href="modules/neorg.modules.core.keybinds.module.html">neorg.modules.core.keybinds.module</a></td>
+		<td class="summary">Registers a new keybind
+ Adds a new keybind to the database of known keybinds</td>
+	</tr>
+	<tr>
+		<td class="name"  nowrap><a href="modules/neorg.modules.core.mode.module.html">neorg.modules.core.mode.module</a></td>
+		<td class="summary">Adds a new mode to the list of available modes
+ This function lets the core.mode module know that a new mode should be added.</td>
+	</tr>
+	<tr>
+		<td class="name"  nowrap><a href="modules/neorg.modules.core.neorgcmd.module.html">neorg.modules.core.neorgcmd.module</a></td>
+		<td class="summary">Generate autocompletions for the :Neorg command
+ This global function returns all available commands to be used for the :Neorg command</td>
+	</tr>
+	<tr>
+		<td class="name"  nowrap><a href="modules/neorg.modules.core.norg.completion.module.html">neorg.modules.core.norg.completion.module</a></td>
+		<td class="summary">Provides completions to the integration engine
+ Parses the public completion table and attempts to find all valid matches</td>
+	</tr>
+	<tr>
+		<td class="name"  nowrap><a href="modules/neorg.modules.core.norg.concealer.module.html">neorg.modules.core.norg.concealer.module</a></td>
+		<td class="summary">Returns all the enabled icons from a table</td>
+	</tr>
+	<tr>
+		<td class="name"  nowrap><a href="modules/neorg.modules.core.norg.dirman.module.html">neorg.modules.core.norg.dirman.module</a></td>
+		<td class="summary">Returns a list of all the workspaces</td>
+	</tr>
+	<tr>
+		<td class="name"  nowrap><a href="modules/neorg.modules.core.norg.esupports.module.html">neorg.modules.core.norg.esupports.module</a></td>
+		<td class="summary">Creates a new indent
+ Sets a new set of rules that when fulfilled will indent the text properly</td>
+	</tr>
+	<tr>
+		<td class="name"  nowrap><a href="modules/neorg.modules.core.norg.qol.todo_items.module.html">neorg.modules.core.norg.qol.todo_items.module</a></td>
+		<td class="summary">Updates the parent todo item for the current todo item if it exists</td>
+	</tr>
+	<tr>
+		<td class="name"  nowrap><a href="modules/neorg.modules.core.queries.native.module.html">neorg.modules.core.queries.native.module</a></td>
+		<td class="summary">Use a <code>tree</code> to query all required nodes from a <code>bufnr</code>.</td>
+	</tr>
+	<tr>
+		<td class="name"  nowrap><a href="modules/neorg.modules.core.ui.module.html">neorg.modules.core.ui.module</a></td>
+		<td class="summary">Gets the current size of the window
+ Returns a table in the form of { width, height } containing the width and height of the current window</td>
+	</tr>
+	<tr>
+		<td class="name"  nowrap><a href="modules/neorg.modules.core.ui.selection_popup.html">neorg.modules.core.ui.selection_popup</a></td>
+		<td class="summary">Displays all possible keys the user can press</td>
+	</tr>
+	<tr>
+		<td class="name"  nowrap><a href="modules/neorg.modules.core.ui.text_popup.html">neorg.modules.core.ui.text_popup</a></td>
+		<td class="summary">Creates a new interactable prompt
+ Opens a floating window at the specified position and asks for user input</td>
+	</tr>
+</table>
+
+</div> <!-- id="content" -->
+</div> <!-- id="main" -->
+<div id="about">
+<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.6</a></i>
+<i style="float:right;">Last updated 2021-10-23 18:36:48 </i>
+</div> <!-- id="about" -->
+</div> <!-- id="container" -->
+</body>
+</html>

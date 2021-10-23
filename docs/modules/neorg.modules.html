@@ -1,0 +1,347 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<head>
+    <title>Reference</title>
+    <link rel="stylesheet" href="../ldoc.css" type="text/css" />
+</head>
+<body>
+
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+
+<div id="main">
+
+
+<!-- Menu -->
+
+<div id="navigation">
+<br/>
+<h1>ldoc</h1>
+
+
+<ul>
+  <li><a href="../index.html">Index</a></li>
+</ul>
+
+<h2>Contents</h2>
+<ul>
+<li><a href="#Functions">Functions</a></li>
+</ul>
+
+
+<h2>Modules</h2>
+<ul class="nowrap">
+  <li><a href="../modules/neorg.html">neorg</a></li>
+  <li><a href="../modules/callbacks.html">callbacks</a></li>
+  <li><a href="../modules/events.html">events</a></li>
+  <li><a href="../modules/neorg.external.helpers.html">neorg.external.helpers</a></li>
+  <li><strong>neorg.modules</strong></li>
+  <li><a href="../modules/neorg.modules.base.html">neorg.modules.base</a></li>
+  <li><a href="../modules/neorg.modules.core.autocommands.module.html">neorg.modules.core.autocommands.module</a></li>
+  <li><a href="../modules/neorg.modules.core.highlights.html">neorg.modules.core.highlights</a></li>
+  <li><a href="../modules/neorg.modules.core.integrations.nvim-compe.module.html">neorg.modules.core.integrations.nvim-compe.module</a></li>
+  <li><a href="../modules/neorg.modules.core.integrations.treesitter.module.html">neorg.modules.core.integrations.treesitter.module</a></li>
+  <li><a href="../modules/neorg.modules.core.keybinds.module.html">neorg.modules.core.keybinds.module</a></li>
+  <li><a href="../modules/neorg.modules.core.mode.module.html">neorg.modules.core.mode.module</a></li>
+  <li><a href="../modules/neorg.modules.core.neorgcmd.module.html">neorg.modules.core.neorgcmd.module</a></li>
+  <li><a href="../modules/neorg.modules.core.norg.completion.module.html">neorg.modules.core.norg.completion.module</a></li>
+  <li><a href="../modules/neorg.modules.core.norg.concealer.module.html">neorg.modules.core.norg.concealer.module</a></li>
+  <li><a href="../modules/neorg.modules.core.norg.dirman.module.html">neorg.modules.core.norg.dirman.module</a></li>
+  <li><a href="../modules/neorg.modules.core.norg.esupports.module.html">neorg.modules.core.norg.esupports.module</a></li>
+  <li><a href="../modules/neorg.modules.core.norg.qol.todo_items.module.html">neorg.modules.core.norg.qol.todo_items.module</a></li>
+  <li><a href="../modules/neorg.modules.core.queries.native.module.html">neorg.modules.core.queries.native.module</a></li>
+  <li><a href="../modules/neorg.modules.core.ui.module.html">neorg.modules.core.ui.module</a></li>
+  <li><a href="../modules/neorg.modules.core.ui.selection_popup.html">neorg.modules.core.ui.selection_popup</a></li>
+  <li><a href="../modules/neorg.modules.core.ui.text_popup.html">neorg.modules.core.ui.text_popup</a></li>
+</ul>
+
+</div>
+
+<div id="content">
+
+<h1>Module <code>neorg.modules</code></h1>
+<p>Neorg's module manager.</p>
+<p>
+
+
+<pre>
+This file is responsible <span class="keyword">for</span> loading, calling <span class="keyword">and</span> managing modules.
+Modules are internal mini-programs that execute on certain events, they build the foundation of neorg itself.
+</pre>
+
+</p>
+
+
+<h2><a href="#Functions">Functions</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#neorg.modules.load_module_from_table">neorg.modules.load_module_from_table (module)</a></td>
+	<td class="summary">Loads and enables a module
+ Loads a specified module.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#neorg.modules.load_module">neorg.modules.load_module (module_name, config)</a></td>
+	<td class="summary">Loads a module from disk
+ Unlike load<em>module</em>from<em>table(), which loads a module from memory, load</em>module() tries to find the corresponding module file on disk and loads it into memory.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#neorg.modules.load_module_as_dependency_from_table">neorg.modules.load_module_as_dependency_from_table (module, parent_module)</a></td>
+	<td class="summary">Loads a preloaded module as a dependency of another module.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#neorg.modules.load_module_as_dependency">neorg.modules.load_module_as_dependency (module_name, parent_module, config)</a></td>
+	<td class="summary">Loads a module as a dependency of another module
+ Normally loads a module, but then sets up the parent module's "required" table, allowing the parent module to access the child as if it were a dependency.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#neorg.modules.get_module">neorg.modules.get_module (module_name)</a></td>
+	<td class="summary">Gets the public API of a module by name
+ Retrieves the public API exposed by the module</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#neorg.modules.get_module_config">neorg.modules.get_module_config (module_name)</a></td>
+	<td class="summary">Retrieves the public configuration of a module
+ Returns the module.config.public table if the module is loaded</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#neorg.modules.is_module_loaded">neorg.modules.is_module_loaded (module_name)</a></td>
+	<td class="summary">Check whether a module is loaded
+ Returns true if module with name module_name is loaded, false otherwise</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#neorg.modules.get_module_version">neorg.modules.get_module_version (module_name)</a></td>
+	<td class="summary">Gets the version of a module
+ Reads the module's public table and looks for a version variable, then converts it from a string into a table, like so: { major = <number>, minor = <number>, patch = <number> }</td>
+	</tr>
+</table>
+
+<br/>
+<br/>
+
+
+    <h2 class="section-header "><a name="Functions"></a>Functions</h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "neorg.modules.load_module_from_table"></a>
+    <strong>neorg.modules.load_module_from_table (module)</strong>
+    </dt>
+    <dd>
+    Loads and enables a module
+ Loads a specified module.  If the module subscribes to any events then they will be activated too.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">module</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+         The actual module to load
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "neorg.modules.load_module"></a>
+    <strong>neorg.modules.load_module (module_name, config)</strong>
+    </dt>
+    <dd>
+    Loads a module from disk
+ Unlike load<em>module</em>from<em>table(), which loads a module from memory, load</em>module() tries to find the corresponding module file on disk and loads it into memory.
+ If the module cannot not be found, attempt to load it off of github (unimplemented). This function also applies user-defined configurations and keymaps to the modules themselves.
+ This is the recommended way of loading modules - load<em>module</em>from_table() should only really be used by neorg itself.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">module_name</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         A path to a module on disk. A path seperator in neorg is '.', not '/'
+        </li>
+        <li><span class="parameter">config</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+         A configuration that reflects the structure of neorg.configuration.user_configuration.load["module.name"].config
+        </li>
+    </ul>
+
+
+
+    <h3>See also:</h3>
+    <ul>
+    </ul>
+
+
+</dd>
+    <dt>
+    <a name = "neorg.modules.load_module_as_dependency_from_table"></a>
+    <strong>neorg.modules.load_module_as_dependency_from_table (module, parent_module)</strong>
+    </dt>
+    <dd>
+    Loads a preloaded module as a dependency of another module.
+ Has the same principle of operation as load<em>module</em>from_table(), except it then sets up the parent module's "required" table, allowing the parent to access the child as if it were a dependency.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">module</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+         A valid table as returned by neorg.modules.create()
+        </li>
+        <li><span class="parameter">parent_module</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         or table If a string, then the parent is searched for in the loaded modules. If a table, then the module is treated as a valid module as returned by neorg.modules.create()
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "neorg.modules.load_module_as_dependency"></a>
+    <strong>neorg.modules.load_module_as_dependency (module_name, parent_module, config)</strong>
+    </dt>
+    <dd>
+    Loads a module as a dependency of another module
+ Normally loads a module, but then sets up the parent module's "required" table, allowing the parent module to access the child as if it were a dependency.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">module_name</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         A path to a module on disk. A path seperator in neorg is '.', not '/'
+        </li>
+        <li><span class="parameter">parent_module</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         The name of the parent module. This is the module which the dependency will be attached to.
+        </li>
+        <li><span class="parameter">config</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+         A configuration that reflects the structure of neorg.configuration.user_configuration.load["module.name"].config
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "neorg.modules.get_module"></a>
+    <strong>neorg.modules.get_module (module_name)</strong>
+    </dt>
+    <dd>
+    Gets the public API of a module by name
+ Retrieves the public API exposed by the module
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">module_name</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         The name of the module to retrieve
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "neorg.modules.get_module_config"></a>
+    <strong>neorg.modules.get_module_config (module_name)</strong>
+    </dt>
+    <dd>
+    Retrieves the public configuration of a module
+ Returns the module.config.public table if the module is loaded
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">module_name</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         The name of the module to retrieve (module must be loaded)
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "neorg.modules.is_module_loaded"></a>
+    <strong>neorg.modules.is_module_loaded (module_name)</strong>
+    </dt>
+    <dd>
+    Check whether a module is loaded
+ Returns true if module with name module_name is loaded, false otherwise
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">module_name</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         The name of an arbitrary module
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "neorg.modules.get_module_version"></a>
+    <strong>neorg.modules.get_module_version (module_name)</strong>
+    </dt>
+    <dd>
+    Gets the version of a module
+ Reads the module's public table and looks for a version variable, then converts it from a string into a table, like so: { major = <number>, minor = <number>, patch = <number> }
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">module_name</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         The name of a valid, loaded module.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">struct</span> or <span class="type">nil</span></span>
+        (if any error occurs)
+    </ol>
+
+
+
+
+</dd>
+</dl>
+
+
+</div> <!-- id="content" -->
+</div> <!-- id="main" -->
+<div id="about">
+<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.6</a></i>
+<i style="float:right;">Last updated 2021-10-23 18:36:48 </i>
+</div> <!-- id="about" -->
+</div> <!-- id="container" -->
+</body>
+</html>

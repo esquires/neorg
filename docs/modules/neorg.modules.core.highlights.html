@@ -1,0 +1,259 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<head>
+    <title>Reference</title>
+    <link rel="stylesheet" href="../ldoc.css" type="text/css" />
+</head>
+<body>
+
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+
+<div id="main">
+
+
+<!-- Menu -->
+
+<div id="navigation">
+<br/>
+<h1>ldoc</h1>
+
+
+<ul>
+  <li><a href="../index.html">Index</a></li>
+</ul>
+
+<h2>Contents</h2>
+<ul>
+<li><a href="#Functions">Functions</a></li>
+</ul>
+
+
+<h2>Modules</h2>
+<ul class="nowrap">
+  <li><a href="../modules/neorg.html">neorg</a></li>
+  <li><a href="../modules/callbacks.html">callbacks</a></li>
+  <li><a href="../modules/events.html">events</a></li>
+  <li><a href="../modules/neorg.external.helpers.html">neorg.external.helpers</a></li>
+  <li><a href="../modules/neorg.modules.html">neorg.modules</a></li>
+  <li><a href="../modules/neorg.modules.base.html">neorg.modules.base</a></li>
+  <li><a href="../modules/neorg.modules.core.autocommands.module.html">neorg.modules.core.autocommands.module</a></li>
+  <li><strong>neorg.modules.core.highlights</strong></li>
+  <li><a href="../modules/neorg.modules.core.integrations.nvim-compe.module.html">neorg.modules.core.integrations.nvim-compe.module</a></li>
+  <li><a href="../modules/neorg.modules.core.integrations.treesitter.module.html">neorg.modules.core.integrations.treesitter.module</a></li>
+  <li><a href="../modules/neorg.modules.core.keybinds.module.html">neorg.modules.core.keybinds.module</a></li>
+  <li><a href="../modules/neorg.modules.core.mode.module.html">neorg.modules.core.mode.module</a></li>
+  <li><a href="../modules/neorg.modules.core.neorgcmd.module.html">neorg.modules.core.neorgcmd.module</a></li>
+  <li><a href="../modules/neorg.modules.core.norg.completion.module.html">neorg.modules.core.norg.completion.module</a></li>
+  <li><a href="../modules/neorg.modules.core.norg.concealer.module.html">neorg.modules.core.norg.concealer.module</a></li>
+  <li><a href="../modules/neorg.modules.core.norg.dirman.module.html">neorg.modules.core.norg.dirman.module</a></li>
+  <li><a href="../modules/neorg.modules.core.norg.esupports.module.html">neorg.modules.core.norg.esupports.module</a></li>
+  <li><a href="../modules/neorg.modules.core.norg.qol.todo_items.module.html">neorg.modules.core.norg.qol.todo_items.module</a></li>
+  <li><a href="../modules/neorg.modules.core.queries.native.module.html">neorg.modules.core.queries.native.module</a></li>
+  <li><a href="../modules/neorg.modules.core.ui.module.html">neorg.modules.core.ui.module</a></li>
+  <li><a href="../modules/neorg.modules.core.ui.selection_popup.html">neorg.modules.core.ui.selection_popup</a></li>
+  <li><a href="../modules/neorg.modules.core.ui.text_popup.html">neorg.modules.core.ui.text_popup</a></li>
+</ul>
+
+</div>
+
+<div id="content">
+
+<h1>Module <code>neorg.modules.core.highlights</code></h1>
+<p>Neorg module for managing highlight groups.</p>
+<p>
+
+</p>
+
+
+<h2><a href="#Functions">Functions</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#trigger_highlights">trigger_highlights ()</a></td>
+	<td class="summary">Defines all the highlight groups for Neorg
+ Reads the highlights configuration table and applies all defined highlights</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#descend">descend (highlights, callback, prefix)</a></td>
+	<td class="summary">Descends down a tree of highlights and applies them
+ Recursively descends down the highlight configuration and applies every highlight accordingly</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#add_highlights">add_highlights (highlights)</a></td>
+	<td class="summary">Adds a set of highlights from a table
+ Takes in a table of highlights and applies them to the current buffer</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#add_dim">add_dim (dim)</a></td>
+	<td class="summary">Adds a set of dims from a table
+ Takes in a table of items to dim and applies the dimming to them</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#clear_highlights">clear_highlights ()</a></td>
+	<td class="summary">Clears all the highlights defined by Neorg
+ Assigns all Neorg* highlights to <code>clear</code></td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#descend">descend (highlights, prefix)</a></td>
+	<td class="summary">Descends down a tree of highlights and clears them
+ Recursively descends down the highlight configuration and clears every highlight accordingly</td>
+	</tr>
+</table>
+
+<br/>
+<br/>
+
+
+    <h2 class="section-header "><a name="Functions"></a>Functions</h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "trigger_highlights"></a>
+    <strong>trigger_highlights ()</strong>
+    </dt>
+    <dd>
+    Defines all the highlight groups for Neorg
+ Reads the highlights configuration table and applies all defined highlights
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "descend"></a>
+    <strong>descend (highlights, callback, prefix)</strong>
+    </dt>
+    <dd>
+    Descends down a tree of highlights and applies them
+ Recursively descends down the highlight configuration and applies every highlight accordingly
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">highlights</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+         The table of highlights to descend down
+        </li>
+        <li><span class="parameter">callback</span>
+            <span class="types"><span class="type">function</span></span>
+         A callback function to be invoked for every highlight. If it returns true then we should recurse down the table tree further
+        </li>
+        <li><span class="parameter">prefix</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         Should be only used by the function itself, acts as a "savestate" so the function can keep track of what path it has descended down
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "add_highlights"></a>
+    <strong>add_highlights (highlights)</strong>
+    </dt>
+    <dd>
+    Adds a set of highlights from a table
+ Takes in a table of highlights and applies them to the current buffer
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">highlights</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+         A table of highlights
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "add_dim"></a>
+    <strong>add_dim (dim)</strong>
+    </dt>
+    <dd>
+    Adds a set of dims from a table
+ Takes in a table of items to dim and applies the dimming to them
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">dim</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+         A table of items to dim
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "clear_highlights"></a>
+    <strong>clear_highlights ()</strong>
+    </dt>
+    <dd>
+    Clears all the highlights defined by Neorg
+ Assigns all Neorg* highlights to <code>clear</code>
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "descend"></a>
+    <strong>descend (highlights, prefix)</strong>
+    </dt>
+    <dd>
+    Descends down a tree of highlights and clears them
+ Recursively descends down the highlight configuration and clears every highlight accordingly
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">highlights</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+         The table of highlights to descend down
+        </li>
+        <li><span class="parameter">prefix</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         Should be only used by the function itself, acts as a "savestate" so the function can keep track of what path it has descended down
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+</dl>
+
+
+</div> <!-- id="content" -->
+</div> <!-- id="main" -->
+<div id="about">
+<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.6</a></i>
+<i style="float:right;">Last updated 2021-10-23 18:36:48 </i>
+</div> <!-- id="about" -->
+</div> <!-- id="container" -->
+</body>
+</html>
